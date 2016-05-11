@@ -1,0 +1,79 @@
+.linea
+{
+	display: inline-block;
+}
+.rojo
+{
+	color: red;
+}
+.verde
+{
+	color: green;
+}
+#superior div div
+{
+	
+	display: inline-block;
+	float: left;
+	text-align: center;
+	width: 50%
+}
+
+#superior div
+{
+	
+	display: inline;
+	text-align: center;
+	font-size: 20pt;
+	font-weight: bold;
+	
+	float: left;
+	width: 33%;
+	margin-top: 20px;
+}
+div select
+{
+	font-weight: bold;
+	font-size: 15;
+	
+}
+.miclase {
+	color: purple;
+}
+
+#t1:hover {
+	background-color: #fabada;
+}
+
+#t1 {
+	background-color: white;
+	font-size: 5em;
+	font-style: italic;
+	font-weight: bold;
+	border-radius: 50px;
+	box-shadow: 12px 12px 15px #00ff00;
+	font-size: 5em;
+}
+
+nav {
+	background-color: yellow;
+}
+a
+{
+font-style: normal;
+text-decoration: none;
+
+}
+nav ul
+{
+text-align: center;
+}
+
+nav ul li {
+	display: inline;
+	font-size: 20pt;
+	font-weight: bold;
+	
+	
+	
+}
