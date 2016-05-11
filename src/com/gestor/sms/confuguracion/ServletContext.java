@@ -1,7 +1,9 @@
+
 package com.gestor.sms.confuguracion;
 
 import java.util.Properties;
-//lino1
+//prueba
+//Fer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
