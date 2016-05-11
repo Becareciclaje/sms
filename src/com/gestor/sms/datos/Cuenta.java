@@ -37,10 +37,6 @@ public class Cuenta implements Serializable {
 	@OneToMany(mappedBy="cuenta")
 	private List<Compra> compras;
 
-	//bi-directional many-to-many association to Usuario
-	@ManyToMany(mappedBy="cuentas")
-	private List<Usuario> usuarios;
-
 	//bi-directional many-to-one association to Destinatario
 	@OneToMany(mappedBy="cuenta")
 	private List<Destinatario> destinatarios;
@@ -48,6 +44,10 @@ public class Cuenta implements Serializable {
 	//bi-directional many-to-one association to Envio
 	@OneToMany(mappedBy="cuenta")
 	private List<Envio> envios;
+
+	//bi-directional many-to-many association to Usuario
+	@ManyToMany(mappedBy="cuentas")
+	private List<Usuario> usuarios;
 
 	public Cuenta() {
 	}
@@ -138,14 +138,6 @@ public class Cuenta implements Serializable {
 		return compra;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
 	public List<Destinatario> getDestinatarios() {
 		return this.destinatarios;
 	}
@@ -188,6 +180,14 @@ public class Cuenta implements Serializable {
 		envio.setCuenta(null);
 
 		return envio;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return this.usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 }
