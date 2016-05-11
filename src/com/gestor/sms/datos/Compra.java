@@ -15,8 +15,9 @@ import java.util.Date;
 public class Compra implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private CompraPK id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 
 	private String cantidad;
 
@@ -31,11 +32,11 @@ public class Compra implements Serializable {
 	public Compra() {
 	}
 
-	public CompraPK getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(CompraPK id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
