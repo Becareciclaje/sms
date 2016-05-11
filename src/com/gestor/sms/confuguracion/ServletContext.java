@@ -1,4 +1,4 @@
-package com.gestos.sms.confuguracion;
+package com.gestor.sms.confuguracion;
 
 import java.util.Properties;
 
@@ -22,12 +22,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(
-	{ "curso.tecnocom.spring", 
-		"curso.tecnocom.spring.daos",
-		"curso.tecnocom.spring.servicios", 
-		"curso.tecnocom.spring.modelos",
-			"curso.tecnocom.spring.delegados",
-			"curso.tecnocom.spring.aspectos"})
+	{ "com.gestor.sms.controladores", 
+		})
 @EnableAspectJAutoProxy
 public class ServletContext extends WebMvcConfigurerAdapter
 {

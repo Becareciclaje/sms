@@ -1,4 +1,4 @@
-package com.gestos.sms.confuguracion;
+package com.gestor.sms.confuguracion;
 
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
