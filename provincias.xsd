@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.catastro.meh.es/"
+	xmlns:tns="http://www.catastro.meh.es/" elementFormDefault="qualified">
+
+	<element name="consulta_provinciero">
+		<complexType>
+			<sequence>
+				<element ref="tns:control" minOccurs="1" maxOccurs="1"></element>
+				<element ref="tns:provinciero" minOccurs="1" maxOccurs="1"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="provinciero">
+		<complexType>
+			<sequence>
+				<element ref="tns:prov" minOccurs="1" maxOccurs="unbounded"></element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="control">
+		<complexType>
+			<sequence>
+				<element name="cuprov" type="int" minOccurs="1" maxOccurs="1"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="prov">
+		<complexType>
+			<sequence>
+				<element name="cpine" type="int" minOccurs="1" maxOccurs="1"></element>
+				<element name="np" type="string" minOccurs="1" maxOccurs="1"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+
+</schema>
