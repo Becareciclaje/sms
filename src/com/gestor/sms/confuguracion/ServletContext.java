@@ -37,7 +37,7 @@ public class ServletContext extends WebMvcConfigurerAdapter
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.
 		setUrl("jdbc:mysql://192.168.120.28:3306/"
-				+ "empresa?useUnicode=true&useLegacyDatetime"
+				+ "gestorsms?useUnicode=true&useLegacyDatetime"
 				+ "Code=false&serverTimezone=UTC");
 		dataSource.setUsername("root");
 		dataSource.setPassword("tecnocom");	
