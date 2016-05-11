@@ -6,7 +6,7 @@
 <body>
 <h1 class="rojo">HOLA</h1>
 	
-</body>
+</body> 
 
 </html>
 
