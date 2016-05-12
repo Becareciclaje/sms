@@ -10,7 +10,7 @@ import com.gestor.sms.servicios.GestorService;
 
 @Component
 @Aspect
-public class AspectoSessionManager
+public class AspectoSessionManager 
 {
 	@Pointcut("execution(@com.gestor.sms.anotaciones.SessionManager * *(..))")
 	public void ejecutar()
