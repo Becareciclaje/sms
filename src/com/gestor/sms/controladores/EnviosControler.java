@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class EnviosControler
 {
-	
-	@RequestMapping("/")
-	public String home()
+	@RequestMapping("/envios")
+	public String envios()
 	{
-		return "home";
+		return "envios";
 	}
+	
 
 }
