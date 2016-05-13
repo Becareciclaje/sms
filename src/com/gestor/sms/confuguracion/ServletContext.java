@@ -20,6 +20,9 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.gestor.sms.daos.ComprasDao;
+import com.gestor.sms.servicios.ComprasService;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(
@@ -28,7 +31,19 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableAspectJAutoProxy
 public class ServletContext extends WebMvcConfigurerAdapter
 {
+	@Bean
+	public ComprasDao getComprasDao()
+	{
+		return new ComprasDao();
+	}
 	
+	@Bean
+	public ComprasService getComprasService()
+	{
+		ComprasService comprasService= new ComprasService();
+		comprasService.setGestorDao(getComprasDao());
+		return comprasService;
+	}
 	
 	@Bean
 	public DriverManagerDataSource getDriverManagerDataSource()
@@ -47,7 +62,7 @@ public class ServletContext extends WebMvcConfigurerAdapter
 	{
 		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 		factoryBean.setDataSource(getDriverManagerDataSource());
-		factoryBean.setPackagesToScan("curso.tecnocom.spring.datos");
+		factoryBean.setPackagesToScan("com.gestor.sms.datos");
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		properties.setProperty("hibernate.show_sql", "true");
