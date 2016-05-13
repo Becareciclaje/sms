@@ -10,7 +10,7 @@ public class SMSControler
 	@RequestMapping("/")
 	public String home()
 	{
-		return "home";
+		return "login";
 	}
 
 }

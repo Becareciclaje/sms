@@ -7,10 +7,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CuentaControler
 {
 	
-	@RequestMapping("/")
-	public String home()
-	{
-		return "home";
-	}
 
 }
