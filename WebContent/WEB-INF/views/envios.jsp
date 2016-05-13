@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,30 +21,37 @@
 		</select>
 	</div>
 
-	Texto SMS a enviar: <textarea rows="10"  cols="80" id="textoSMS"></textarea>
+	Texto SMS a enviar:
+	<textarea rows="10" cols="80" id="textoSMS"></textarea>
 	caracteres disponibles: ${textoSMS.length()}
 
-<br>
+	<br>
 
-<div style="border-style:solid; size: portrait">Para personalizar el texto de su SMS introduzca "{nombre}" en el lugar adecuado para que sea sustituido por el nombre de su destinatario </div>
+	<div style="border-style: solid; size: portrait">Para
+		personalizar el texto de su SMS introduzca "{nombre}" en el lugar
+		adecuado para que sea sustituido por el nombre de su destinatario</div>
 
-<br>
+	<br> Nº teléfono:
+	<input type="text" name="telefono">
 
-Nº teléfono: <input type="text" name = "telefono">
+	<br>
 
-<br>
-
-
-	<sp:form modelAttribute="destinatarios" action="seleccionar">
-		<div style="width: 320px; height: 80px; overflow: auto; border-style: solid">
+	<sp:form modelAttribute="destinatario" action="seleccionar">
+		<div
+			style="width: 320px; height: 80px; overflow: auto; border-style: solid">
 			<table>
-
+			
+				<!-- <tr>
+					<td><input type="checkbox" name="destinatario.id"></td>
+					<td><input path="destinatario.nombre" /></td>
+				</tr> -->
+				
 				<c:set var="i" value="0"></c:set>
-				<c:forEach items="${destinatarios.destinatarios}" var="destinatario">
-					<sp:hidden path="destinatarios[${i}].id" />
+								<c:forEach items="${destinatario}" var="destinatario">
+					<sp:hidden path="destinatario[${i}].id" />
 					<tr>
-						<td><input type="checkbox" name="destinatarios[${i}].telefono"></td>
-						<td><sp:input path="destinatarios[${i}].nombre" /></td>
+						<td><input type="checkbox" name="destinatario[${i}].telefono"></td>
+						<td><sp:input path="destinatario[${i}].nombre" /></td>
 					</tr>
 
 					<c:set var="i" value="${i+1}"></c:set>
