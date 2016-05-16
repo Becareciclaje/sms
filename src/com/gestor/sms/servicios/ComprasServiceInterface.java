@@ -4,9 +4,8 @@ import java.util.List;
 
 import com.gestor.sms.datos.Cuenta;
 
-public interface ComprasServiceInterface
+public interface ComprasServiceInterface extends GestorServiceInterface
 {
 	
-	public void dameCuentas(List<Cuenta> cuentas, int id) throws Exception;
 
 }

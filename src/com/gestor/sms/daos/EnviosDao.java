@@ -21,6 +21,7 @@ public class EnviosDao extends GestorDao
 		Criteria criteria= getSession().createCriteria(Destinatario.class); 
 		destinatarios = criteria.list();
 	}
+	
 
 
 }

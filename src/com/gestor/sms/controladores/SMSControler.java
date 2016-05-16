@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gestor.sms.datos.Usuario;
-import com.gestor.sms.servicios.SmsService;
+import com.gestor.sms.servicios.GestorServiceInterface;
 
 
 @Controller
 public class SMSControler
 {
-	
+	private GestorServiceInterface gestorServiceInterface;
 	@RequestMapping("/")
 	public ModelAndView home()
 	{
@@ -20,28 +20,22 @@ public class SMSControler
 		modelAndView.addObject("usuario", new Usuario());
 		return modelAndView;
 	}
-	private SmsService smsService;
+	
 	@RequestMapping(value = "/verLogin", method = RequestMethod.POST)
 	public String verLogin(Usuario login)
 		{
-		try
-		{
-			getSmsService().verificaLogin(login);
-			return "menu";
-		} catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "errorLogin";
-		}
+		return null;
 	}
-	public SmsService getSmsService()
+
+	public GestorServiceInterface getGestorServiceInterface()
 	{
-		return smsService;
+		return gestorServiceInterface;
 	}
-	public void setSmsService(SmsService smsService)
+
+	public void setGestorServiceInterface(GestorServiceInterface gestorServiceInterface)
 	{
-		this.smsService = smsService;
+		this.gestorServiceInterface = gestorServiceInterface;
 	}
+
 
 }
