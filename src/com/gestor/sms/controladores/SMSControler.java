@@ -2,6 +2,7 @@ package com.gestor.sms.controladores;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import com.gestor.sms.servicios.SMSServiceInterface;
 @Controller
 public class SMSControler
 {
+	@Autowired
 	private SMSServiceInterface smsServiceInterface;
 
 	@RequestMapping("/")
@@ -45,7 +47,7 @@ public class SMSControler
 		ModelAndView modelAndView= new ModelAndView();
 		try
 		{
-			getSmsServiceInterface().verLogin(registro);
+			getSmsServiceInterface().registro(registro);
 			request.getSession(true).setAttribute("usuario", registro.getUsuario());
 			modelAndView.setViewName("");
 			
@@ -57,6 +59,35 @@ public class SMSControler
 			modelAndView.addObject("error", "El usuario ya existe");
 		}
 		return modelAndView;
+	}
+	
+	@RequestMapping("/verLogin")
+	public ModelAndView verLogin(HttpServletRequest request,Usuario usuario)
+	{
+		ModelAndView modelAndView= new ModelAndView("/");
+		
+		try
+		{
+			getSmsServiceInterface().verUsuario(usuario);
+			request.getSession(true).setAttribute("usuario", usuario);
+			modelAndView.addObject("texto", "usuariono  es valido");
+		} catch (UsuarioExisteException e)
+		{
+			// TODO Auto-generated catch block
+			
+			modelAndView.addObject("texto", "usuario  es valido");
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			modelAndView.addObject("texto", "problemas de conexion");
+		}
+		
+		
+		return modelAndView;
+		
+		
 	}
 
 	public SMSServiceInterface getSmsServiceInterface()

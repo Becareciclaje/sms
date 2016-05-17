@@ -4,6 +4,7 @@ import com.gestor.sms.anotaciones.SessionManager;
 import com.gestor.sms.anotaciones.TransactionManager;
 import com.gestor.sms.beans.Registro;
 import com.gestor.sms.daos.SMSDao;
+import com.gestor.sms.datos.Usuario;
 import com.gestor.sms.excepciones.UsuarioExisteException;
 
 public class SMSService extends GestorService implements SMSServiceInterface
@@ -13,7 +14,7 @@ public class SMSService extends GestorService implements SMSServiceInterface
 
 	@Override
 	@SessionManager
-	public void verLogin(Registro registro) throws UsuarioExisteException
+	public void registro(Registro registro) throws UsuarioExisteException
 	{
 		try
 		{
@@ -29,6 +30,13 @@ public class SMSService extends GestorService implements SMSServiceInterface
 			e.printStackTrace();
 		}
 		
+	}
+
+	@SessionManager
+	public void verUsuario(Usuario  usuario) throws  Exception
+	{
+		getSmsDao().setSession(getGestorDao().getSession());
+		getSmsDao().verUsuario(usuario);
 	}
 
 	@Override
@@ -48,5 +56,7 @@ public class SMSService extends GestorService implements SMSServiceInterface
 	{
 		this.smsDao = smsDao;
 	}
+
+	
 
 }

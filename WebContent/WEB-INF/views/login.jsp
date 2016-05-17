@@ -25,6 +25,7 @@
 				<td colspan="2"><input type="submit" value="ENVIAR"></td>
 			</tr>
 		</table>
+		<h1 style="color: red;">${texto}</h1>
 
 	</sp:form>
 </body>
