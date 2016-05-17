@@ -2,29 +2,20 @@ package com.gestor.sms.servicios;
 
 import java.util.List;
 
-import javax.xml.ws.WebServiceClient;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.gestor.sms.anotaciones.SessionManager;
-import com.gestor.sms.daos.ComprasDao;
-import com.gestor.sms.datos.Cuenta;
-
-
-public class ComprasService extends GestorService implements ComprasServiceInterface
+public class ComprasService extends GestorService 
 {
+
+	@Override
+	public void cargaEntidadWithFilterProperty(List<?> datos, Class<?> clase, String property, Object value)
+			throws Exception
+	{
+		getGestorDao().cargaEntidadWithFilterProperty(datos, clase, property, value);
+	}
 
 	
 
-	@Override
-	@SessionManager
-	public void dameCuentas(List<Cuenta> cuentas, int id) throws Exception
-	{
-		ComprasDao comprasDao=(ComprasDao) getGestorDao();
-		comprasDao.dameCuentas(cuentas, id);
-
-	}
+	
 
 	
 

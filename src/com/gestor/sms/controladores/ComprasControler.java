@@ -11,12 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gestor.sms.datos.Cuenta;
 import com.gestor.sms.servicios.ComprasService;
 import com.gestor.sms.servicios.ComprasServiceInterface;
-
+ 
 @Controller
 public class ComprasControler
 {
 	@Autowired
-	private ComprasServiceInterface cuentasServiceInterface;
+	private ComprasServiceInterface comprasServiceInterface;
 	
 	@RequestMapping("compras")
 public ModelAndView compras()
@@ -28,7 +28,8 @@ public ModelAndView compras()
 	
 	try
 	{
-		getCuentasServiceInterface().dameCuentas(cuentas, 1);
+	
+		getComprasServiceInterface().cargaEntidadWithFilterProperty(cuentas, Cuenta.class, "id", 0);
 		
 	} catch (Exception e)
 	{
@@ -42,14 +43,14 @@ public ModelAndView compras()
 	
 }
 
-	public ComprasServiceInterface getCuentasServiceInterface()
+	public ComprasServiceInterface getComprasServiceInterface()
 	{
-		return cuentasServiceInterface;
+		return comprasServiceInterface;
 	}
 
-	public void setCuentasServiceInterface(ComprasServiceInterface cuentasServiceInterface)
+	public void setComprasServiceInterface(ComprasServiceInterface comprasServiceInterface)
 	{
-		this.cuentasServiceInterface = cuentasServiceInterface;
+		this.comprasServiceInterface = comprasServiceInterface;
 	}
 
 	
