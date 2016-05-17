@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-@Service
-public class ComprasService extends GestorService 
+
+public class ComprasService extends GestorService implements ComprasServiceInterface
 {
 
 	@Override
