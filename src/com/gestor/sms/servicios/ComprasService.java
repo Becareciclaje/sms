@@ -6,9 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gestor.sms.anotaciones.SessionManager;
+import com.gestor.sms.anotaciones.TransactionManager;
 import com.gestor.sms.daos.ComprasDao;
+import com.gestor.sms.datos.Compra;
 import com.gestor.sms.datos.Cuenta;
 import com.gestor.sms.datos.Usuario;
+
+
+
 
 
 public class ComprasService extends GestorService implements ComprasServiceInterface
@@ -30,6 +35,21 @@ public class ComprasService extends GestorService implements ComprasServiceInter
 	{
 		getComprasdao().setSession(getGestorDao().getSession());
 		getComprasdao().cargaCuentasByUsuario(cuentas, usuario);
+		
+	}
+	
+	@TransactionManager
+	public void grabaCompra(Compra compra) throws Exception
+	{
+		
+		
+		
+		
+	}
+
+	private void invocarPorReflection(ComprasDao comprasdao2, String cuenta, String cantidad)
+	{
+		// TODO Auto-generated method stub
 		
 	}
 

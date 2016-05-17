@@ -10,24 +10,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-<sp:form modelAttribute="cuenta" action="grabaCompra">
-	<div>
+	<sp:form modelAttribute="compra" action="grabaCompra">
+		<div>
 
-		<div class="linea">SELECCIONE CUENTA</div>
-		<select id="Cuenta" onchange="verCuenta(this.value)" class="linea">
+			<div class="linea">SELECCIONE CUENTA</div>
+			<sp:select id="Cuenta" class="linea" items="${cuentas }" itemLabel="nif" itemValue="id" path="cuenta.id"> 
+		
 
-			<sp:select path="id"
-				items="${cuentas}" itemLabel="nombre"
-				itemValue="id" />
+			</sp:select>
+		</div>
 
-		</select>
-	</div>
+		<br>
+		<br>
+		<h1 style="color: red;">${resultado}</h1>
+		
+			<table border="1">
+				<tr>
+					<td>CANTIDAD</td>
+					<td><sp:input path="cantidad" /></td>
+				</tr>
+				
+				<tr>
+					<td>FECHA</td>
+					<td><sp:input path="fecha" /></td>
+				</tr>
 
+				<tr>
+					<td colspan="2"><input type="submit" value="COMPRAR"></td>
+				</tr>
 
+			</table>
 
+		
 
-
-	
 		<table border="1">
 			<tr>
 				<td>CANTIDAD</td>
