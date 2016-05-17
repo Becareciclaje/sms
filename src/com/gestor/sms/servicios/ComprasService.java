@@ -2,8 +2,10 @@ package com.gestor.sms.servicios;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 
-public class ComprasService extends GestorService 
+
+public class ComprasService extends GestorService implements ComprasServiceInterface
 {
 
 	@Override

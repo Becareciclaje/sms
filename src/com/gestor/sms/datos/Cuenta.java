@@ -21,11 +21,19 @@ public class Cuenta implements Serializable {
 
 	private byte autorizado;
 
+	private String codigoPostal;
+
+	private String direccion;
+
 	private String mail;
 
 	private String nif;
 
 	private String nombre;
+
+	private String poblacion;
+
+	private String provincia;
 
 	private String remitente;
 
@@ -37,6 +45,10 @@ public class Cuenta implements Serializable {
 	@OneToMany(mappedBy="cuenta")
 	private List<Compra> compras;
 
+	//bi-directional many-to-many association to Usuario
+	@ManyToMany(mappedBy="cuentas")
+	private List<Usuario> usuarios;
+
 	//bi-directional many-to-one association to Destinatario
 	@OneToMany(mappedBy="cuenta")
 	private List<Destinatario> destinatarios;
@@ -44,10 +56,6 @@ public class Cuenta implements Serializable {
 	//bi-directional many-to-one association to Envio
 	@OneToMany(mappedBy="cuenta")
 	private List<Envio> envios;
-
-	//bi-directional many-to-many association to Usuario
-	@ManyToMany(mappedBy="cuentas")
-	private List<Usuario> usuarios;
 
 	public Cuenta() {
 	}
@@ -66,6 +74,22 @@ public class Cuenta implements Serializable {
 
 	public void setAutorizado(byte autorizado) {
 		this.autorizado = autorizado;
+	}
+
+	public String getCodigoPostal() {
+		return this.codigoPostal;
+	}
+
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+
+	public String getDireccion() {
+		return this.direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	public String getMail() {
@@ -90,6 +114,22 @@ public class Cuenta implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getPoblacion() {
+		return this.poblacion;
+	}
+
+	public void setPoblacion(String poblacion) {
+		this.poblacion = poblacion;
+	}
+
+	public String getProvincia() {
+		return this.provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
 	}
 
 	public String getRemitente() {
@@ -138,6 +178,14 @@ public class Cuenta implements Serializable {
 		return compra;
 	}
 
+	public List<Usuario> getUsuarios() {
+		return this.usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	public List<Destinatario> getDestinatarios() {
 		return this.destinatarios;
 	}
@@ -180,14 +228,6 @@ public class Cuenta implements Serializable {
 		envio.setCuenta(null);
 
 		return envio;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 
 }
