@@ -7,20 +7,23 @@ import org.springframework.stereotype.Service;
 
 import com.gestor.sms.anotaciones.SessionManager;
 import com.gestor.sms.daos.EnviosDao;
+import com.gestor.sms.datos.Cuenta;
 import com.gestor.sms.datos.Destinatario;
+import com.gestor.sms.datos.Usuario;
 
-@Service
+
 public class EnviosService extends GestorService implements EnviosServiceInterface
 {
 
 
-	@Autowired
+
 	private EnviosDao enviosDao;
 
 	@Override
 	@SessionManager
 	public void dameDestinatarios(List<Destinatario> destinatarios, int id) throws Exception
 	{
+		getEnviosDao().setSession(getGestorDao().getSession());
 		getEnviosDao().dameDestinatarios(destinatarios, id);
 
 	}
@@ -35,5 +38,20 @@ public class EnviosService extends GestorService implements EnviosServiceInterfa
 		this.enviosDao = enviosDao;
 	}
 
+	
+	@Override
+	@SessionManager
+	public void cargaEntidadWithFilterProperty(List<?> datos, Class<?> clase, String property, Object value)
+			throws Exception
+	{
+		getGestorDao().cargaEntidadWithFilterProperty(datos, clase, property, value);
+	}
+
+	@Override
+	public void cargaCuentasByUsuario(List<Cuenta> cuentas, Usuario usuario) throws Exception
+	{
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

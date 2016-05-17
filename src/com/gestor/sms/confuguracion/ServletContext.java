@@ -1,4 +1,3 @@
-
 package com.gestor.sms.confuguracion;
 
 import java.util.Properties;
@@ -21,9 +20,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.gestor.sms.daos.ComprasDao;
-import com.gestor.sms.daos.GestorDao;
+import com.gestor.sms.daos.EnviosDao;
 import com.gestor.sms.daos.SMSDao;
 import com.gestor.sms.servicios.ComprasService;
+import com.gestor.sms.servicios.EnviosService;
 import com.gestor.sms.servicios.SMSService;
 
 @Configuration
@@ -47,6 +47,18 @@ public class ServletContext extends WebMvcConfigurerAdapter
 		ComprasService comprasService= new ComprasService();
 		comprasService.setComprasdao(getComprasDao());;
 		return comprasService;
+	}
+	@Bean
+	public EnviosDao getEnviosDao()
+	{
+		return new EnviosDao();
+	}
+	@Bean
+	public EnviosService getEnviosService()
+	{
+		EnviosService enviosService= new EnviosService();
+		enviosService.setEnviosDao(getEnviosDao());
+		return enviosService;
 	}
 	
 	public SMSDao getSMSDao()
