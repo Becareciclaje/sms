@@ -44,7 +44,7 @@ public class SMSControler
 	@RequestMapping("/altaUsuario")
 	public ModelAndView altaUsuario(HttpServletRequest request,Registro registro)
 	{
-		ModelAndView modelAndView= new ModelAndView();
+		ModelAndView modelAndView= new ModelAndView("registro");
 		try
 		{
 			getSmsServiceInterface().registro(registro);
@@ -58,6 +58,12 @@ public class SMSControler
 			e.printStackTrace();
 			modelAndView.setViewName("registro");
 			modelAndView.addObject("texto", "Error: el usuario ya existe");
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			modelAndView.addObject("texto", "problemas de conexion");
 		}
 		return modelAndView;
 	}
