@@ -38,62 +38,78 @@ public class Envio implements Serializable {
 	@JoinColumn(name="cuentas_id")
 	private Cuenta cuenta;
 
-	public Envio() {
+	public Envio() 
+	{
+		
 	}
 
-	public int getId() {
+	public int getId() 
+	{
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(int id) 
+	{
 		this.id = id;
 	}
 
-	public Date getFecha() {
+	public Date getFecha() 
+	{
 		return this.fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(Date fecha) 
+	{
 		this.fecha = fecha;
 	}
 
-	public Date getFechaEnvio() {
+	public Date getFechaEnvio() 
+	{
 		return this.fechaEnvio;
 	}
 
-	public void setFechaEnvio(Date fechaEnvio) {
+	public void setFechaEnvio(Date fechaEnvio) 
+	{
 		this.fechaEnvio = fechaEnvio;
 	}
 
-	public String getIndiicadorEnvio() {
+	public String getIndiicadorEnvio() 
+	{
 		return this.indiicadorEnvio;
 	}
 
-	public void setIndiicadorEnvio(String indiicadorEnvio) {
+	public void setIndiicadorEnvio(String indiicadorEnvio) 
+	{
 		this.indiicadorEnvio = indiicadorEnvio;
 	}
 
-	public String getTelefono() {
+	public String getTelefono() 
+	{
 		return this.telefono;
 	}
 
-	public void setTelefono(String telefono) {
+	public void setTelefono(String telefono) 
+	{
 		this.telefono = telefono;
 	}
 
-	public String getTextoSMS() {
+	public String getTextoSMS() 
+	{
 		return this.textoSMS;
 	}
 
-	public void setTextoSMS(String textoSMS) {
+	public void setTextoSMS(String textoSMS) 
+	{
 		this.textoSMS = textoSMS;
 	}
 
-	public Cuenta getCuenta() {
+	public Cuenta getCuenta() 
+	{
 		return this.cuenta;
 	}
 
-	public void setCuenta(Cuenta cuenta) {
+	public void setCuenta(Cuenta cuenta) 
+	{
 		this.cuenta = cuenta;
 	}
 

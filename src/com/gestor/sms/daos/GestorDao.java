@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
+@Repository
 public class GestorDao
 {
 	@Autowired
@@ -45,7 +45,8 @@ public class GestorDao
 	{
 		Criteria criteria=getSession().createCriteria(clase);
 		criteria.add(Restrictions.eq(property, value));
-		datos=criteria.list();
+		List resultado=criteria.list();
+		datos.addAll(resultado);
 		
 	}
 	
