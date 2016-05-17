@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gestor.sms.datos.Compra;
 import com.gestor.sms.datos.Cuenta;
 import com.gestor.sms.datos.Usuario;
 import com.gestor.sms.servicios.ComprasService;
@@ -48,7 +49,7 @@ public ModelAndView compras(HttpServletRequest request)
 		e.printStackTrace();
 	}
 	modelAndView.addObject("cuentas",cuentas);
-	modelAndView.addObject("cuenta",new Cuenta());
+	modelAndView.addObject("compra",new Compra());
 	
 	return modelAndView;
 	

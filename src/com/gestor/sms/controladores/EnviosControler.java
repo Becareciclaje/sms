@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gestor.sms.datos.Destinatario;
+import com.gestor.sms.datos.Usuario;
 import com.gestor.sms.servicios.EnviosServiceInterface;
 
 @Controller
@@ -26,7 +27,9 @@ public class EnviosControler
 		List<Destinatario> destinatarios=new ArrayList<>();;
 		try
 		{
-			getEnviosServiceInterface().dameDestinatarios(destinatarios, 1);
+			List<Usuario> usuarios=new ArrayList<>();
+			getEnviosServiceInterface().cargaEntidadWithFilterProperty(usuarios, Usuario.class, "login", "fer");
+			getEnviosServiceInterface().dameDestinatarios(destinatarios, usuarios.get(0).getId());
 
 		} catch (Exception e)
 		{

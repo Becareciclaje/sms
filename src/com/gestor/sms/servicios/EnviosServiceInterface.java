@@ -6,7 +6,7 @@ import com.gestor.sms.datos.Cuenta;
 import com.gestor.sms.datos.Destinatario;
 import com.gestor.sms.datos.Usuario;
 
-public interface EnviosServiceInterface
+public interface EnviosServiceInterface extends GestorServiceInterface
 {
 
 	public void cargaCuentasByUsuario(List<Cuenta> cuentas, Usuario usuario) throws Exception;
