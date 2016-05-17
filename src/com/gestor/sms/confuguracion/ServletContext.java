@@ -21,6 +21,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.gestor.sms.daos.ComprasDao;
+import com.gestor.sms.daos.GestorDao;
 import com.gestor.sms.daos.SMSDao;
 import com.gestor.sms.servicios.ComprasService;
 import com.gestor.sms.servicios.SMSService;
@@ -33,17 +34,18 @@ import com.gestor.sms.servicios.SMSService;
 @EnableAspectJAutoProxy
 public class ServletContext extends WebMvcConfigurerAdapter
 {
-	
+	@Bean
 	public ComprasDao getComprasDao()
 	{
-		return new ComprasDao();
+		return new  ComprasDao();
 	}
+	
 	
 	@Bean
 	public ComprasService getComprasService()
 	{
 		ComprasService comprasService= new ComprasService();
-		comprasService.setGestorDao(getComprasDao());
+		comprasService.setComprasdao(getComprasDao());;
 		return comprasService;
 	}
 	
