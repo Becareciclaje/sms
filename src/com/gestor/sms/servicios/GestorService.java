@@ -2,12 +2,14 @@ package com.gestor.sms.servicios;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.gestor.sms.daos.GestorDao;
 
 
 public class GestorService implements GestorServiceInterface
 {
-	
+	@Autowired
 	private GestorDao gestorDao;
 
 	public GestorDao getGestorDao()
