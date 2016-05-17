@@ -24,13 +24,6 @@ public class EnviosService extends GestorService implements EnviosServiceInterfa
 		getEnviosDao().setSession(getGestorDao().getSession());
 		getEnviosDao().dameDestinatarios(cuentas, id);
 		destinatarios.addAll(cuentas.get(0).getDestinatarios());
-		//System.out.println("ejemplo");
-	}
-
-	private Cuenta DameCuenta(int id)
-	{
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public EnviosDao getEnviosDao()
@@ -42,7 +35,6 @@ public class EnviosService extends GestorService implements EnviosServiceInterfa
 	{
 		this.enviosDao = enviosDao;
 	}
-
 	
 	@Override
 	@SessionManager
