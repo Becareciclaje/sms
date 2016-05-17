@@ -39,7 +39,7 @@
 	<sp:form modelAttribute="destinatario" action="seleccionar">
 		<div
 			style="width: 320px; height: 80px; overflow: auto; border-style: solid">
-			<table border="1">
+			<table>
 			
 				<!-- <tr>
 					<td><input type="checkbox" name="destinatario.id"></td>
@@ -47,10 +47,10 @@
 				</tr> -->
 				
 				<c:set var="i" value="0"></c:set>
-				<c:forEach items="${destinatario}" var="destinatario">
+								<c:forEach items="${destinatario}" var="destinatario">
 					<sp:hidden path="destinatario[${i}].id" />
 					<tr>
-						<td><input type="checkbox" name="destinatario[${i}].id"></td>
+						<td><input type="checkbox" name="destinatario[${i}].telefono"></td>
 						<td><sp:input path="destinatario[${i}].nombre" /></td>
 					</tr>
 

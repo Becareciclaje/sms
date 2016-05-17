@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.gestor.sms.datos.Destinatario;
 
-public interface EnviosServiceInterface extends GestorServiceInterface
+public interface EnviosServiceInterface
 {
 
-	//public void dameDestinatarios(List<Destinatario> destinatarios, int id) throws Exception;
+	public void dameDestinatarios(List<Destinatario> destinatarios, int id) throws Exception;
 	
 }
