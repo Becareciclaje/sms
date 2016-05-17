@@ -11,6 +11,14 @@
 <body>
 	<sp:form modelAttribute="registro" action="altaUsuario">
 		<table border="1">
+		    <tr>
+				<td>USUARIO</td>
+				<td><sp:input path="usuario.login" /></td>
+			</tr>
+			<tr>
+				<td>CLAVE</td>
+				<td><sp:input path="usuario.clave" /></td>
+			</tr>
 			<tr>
 				<td>NOMBRE</td>
 				<td><sp:input path="cuenta.nombre" /></td>
