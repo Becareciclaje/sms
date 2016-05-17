@@ -19,7 +19,7 @@ public class AspectoSessionManager
 	}
 
 	@Around("ejecutar()")
-	public void ponerSesion(ProceedingJoinPoint joinPoint)
+	public void ponerSesion(ProceedingJoinPoint joinPoint) throws Throwable 
 	{
 
 		GestorService gestorService = (GestorService) joinPoint.getTarget();
@@ -35,7 +35,8 @@ public class AspectoSessionManager
 		} catch (Throwable e)
 		{
 			// AfterThrowing
-			e.printStackTrace();
+			//e.printStackTrace();
+			throw e;
 
 		} finally
 		{

@@ -64,17 +64,17 @@ public class SMSControler
 	@RequestMapping("/verLogin")
 	public ModelAndView verLogin(HttpServletRequest request,Usuario usuario)
 	{
-		ModelAndView modelAndView= new ModelAndView("/");
+		ModelAndView modelAndView= new ModelAndView("login");
 		
 		try
 		{
 			getSmsServiceInterface().verUsuario(usuario);
 			request.getSession(true).setAttribute("usuario", usuario);
-			modelAndView.addObject("texto", "usuariono  es valido");
+			modelAndView.addObject("texto", "usuario no  es valido");
 		} catch (UsuarioExisteException e)
 		{
 			// TODO Auto-generated catch block
-			
+			request.getSession(true).invalidate();
 			modelAndView.addObject("texto", "usuario  es valido");
 		}
 		catch (Exception e)
