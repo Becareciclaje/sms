@@ -66,7 +66,8 @@
 			<tr>
 				<td colspan="2"><input type="submit" value="GRABAR"></td>
 			</tr>
-		</table>		
+		</table>
+		<h1 style="color: red;">${texto}</h1>		
 	</sp:form>
 </body>
 </html>

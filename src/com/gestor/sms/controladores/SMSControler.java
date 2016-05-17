@@ -50,13 +50,14 @@ public class SMSControler
 			getSmsServiceInterface().registro(registro);
 			request.getSession(true).setAttribute("usuario", registro.getUsuario());
 			modelAndView.setViewName("");
+			modelAndView.addObject("texto", "El usuario ha sido grabado correctamente");
 			
 		} catch (UsuarioExisteException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			modelAndView.setViewName("registro");
-			modelAndView.addObject("error", "El usuario ya existe");
+			modelAndView.addObject("texto", "Error: el usuario ya existe");
 		}
 		return modelAndView;
 	}
