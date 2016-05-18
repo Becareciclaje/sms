@@ -37,7 +37,7 @@
 	<br>
 
 	<sp:form modelAttribute="destinatarios" action="seleccionar">
-		<div style="width: 450px; height: 80px; overflow: auto; border-style: solid">
+		<div style="width: 450px; height: 100px; overflow: auto; border-style: solid">
 			<table>
 			
 <%-- 				<tr>
@@ -50,22 +50,14 @@
 
 				</tr>
  --%>				
-				<c:set var="i" value="0"></c:set>
 
-				<c:forEach var="i" begin="1" end="5" step="1"> 
+				<c:forEach items="${destinatarios }" var="destinatario">
 					<tr>
-						<td><sp:input path="${i}" /></td>
-					</tr>				
-				</c:forEach>
-				 
-				<!-- <c:forEach items="${destinatario}" var="destinatarios">  
-					<tr>
-						<td><sp:input path="${i}" /></td>
+						<td><input type="checkbox" value="destinatario.telefono" name="destinatario.telefono"></td>
+						<td>${destinatario.nombre }</td>
 					</tr>
-
-					<c:set var="i" value="${i+1}"></c:set>
 				</c:forEach>
--->
+
 			</table>
 		</div>
 

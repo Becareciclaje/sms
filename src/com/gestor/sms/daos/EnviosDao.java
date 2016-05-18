@@ -28,5 +28,12 @@ public class EnviosDao extends GestorDao
 	}
 	
 
+	public void seleccionar(List<Destinatario> destinatarios) throws Exception
+	{
+		for (Destinatario destinatario : destinatarios)
+		{
+			grabaDato(destinatario);
+		}
+	}
 
 }
