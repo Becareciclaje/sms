@@ -14,7 +14,7 @@
 		<div>
 
 			<div class="linea">SELECCIONE CUENTA</div>
-			<sp:select id="Cuenta" class="linea" items="${cuentas }" itemLabel="nif" itemValue="id" path="cuenta.id"> 
+			<sp:select id="Cuenta" class="linea" items="${cuentas }"  itemValue="id" path="cuenta.id"> 
 		
 
 			</sp:select>
@@ -32,7 +32,7 @@
 				
 				<tr>
 					<td>FECHA</td>
-					<td><sp:input path="fecha" /></td>
+					<td><sp:input path="fechaTexto" /></td>
 				</tr>
 
 				<tr>
@@ -40,22 +40,8 @@
 				</tr>
 
 			</table>
-
-		
-
-		<table border="1">
-			<tr>
-				<td>CANTIDAD</td>
-				<td>CUENTA</td>
-				<td>FECHA</td>
-
-			</tr>
-
-		</table>
-		<div align="center">
-			<input type="submit" value="COMPRAR"
-				style="background-color: red; font-size: 25px;">
-		</div>
+			<h1 style="color: red;">${error }</h1>
+				
 	</sp:form>
 
 </body>

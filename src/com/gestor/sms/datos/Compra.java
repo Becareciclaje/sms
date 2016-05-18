@@ -29,6 +29,8 @@ public class Compra implements Serializable {
 	@JoinColumn(name="cuentas_id")
 	private Cuenta cuenta;
 
+	@Transient
+	private String fechaTexto;
 	public Compra() {
 	}
 
@@ -62,6 +64,16 @@ public class Compra implements Serializable {
 
 	public void setCuenta(Cuenta cuenta) {
 		this.cuenta = cuenta;
+	}
+
+	public String getFechaTexto()
+	{
+		return fechaTexto;
+	}
+
+	public void setFechaTexto(String fechaTexto)
+	{
+		this.fechaTexto = fechaTexto;
 	}
 
 }
