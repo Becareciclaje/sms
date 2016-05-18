@@ -1,3 +1,4 @@
+<%@taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="cabecera.jsp"></jsp:include>
 	<sp:form action="verLogin" method="post" modelAttribute="usuario">
 
