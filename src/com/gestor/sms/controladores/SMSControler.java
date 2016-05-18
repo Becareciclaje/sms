@@ -31,6 +31,15 @@ public class SMSControler
 		//modelAndView.addObject("usuario", new Usuario());
 		return modelAndView;
 	}
+	@RequestMapping("/login")
+	public ModelAndView login()
+	{
+		ModelAndView modelAndView = new ModelAndView("login");
+		//modelAndView.addObject("usuario", new Usuario());
+		//ModelAndView modelAndView = new ModelAndView("login");
+		//modelAndView.addObject("usuario", new Usuario());
+		return modelAndView;
+	}
 
 	@RequestMapping(value = "/registro")
 	public ModelAndView registro()
