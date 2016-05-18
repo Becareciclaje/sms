@@ -1,7 +1,9 @@
 package com.gestor.sms.daos;
 
+import java.util.Iterator;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -28,5 +30,12 @@ public class EnviosDao extends GestorDao
 	}
 	
 
+	public void seleccionar(List<Destinatario> destinatarios) throws Exception
+	{
+		for (Destinatario destinatario : destinatarios)
+		{
+			grabaDato(destinatario);
+		}
+	}
 
 }
