@@ -27,6 +27,7 @@
 			<c:set var="rolAdmin" value="ADMIN" />
 			<c:set var="rolUser" value="USER" />
 			<c:forEach items="${usuario.roles}" var="rol">
+				<li><span>rol.rol</span>
 				<c:if test="${rol.rol eq rolAdmin}">
 					<li><span>Cuenta</span>
 						<ul>

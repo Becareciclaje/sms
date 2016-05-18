@@ -1,17 +1,17 @@
 <%@taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
 <jsp:include page="cabecera.jsp"></jsp:include>
 <sp:form action="verLogin" method="post" modelAttribute="usuario">
-
+	<div class="labelBigBlue" align="left" >LOGIN</div>
 	<table align="center">
 		<tr>
-			<td class="labelSmallWhite">USUARIO</td>
+			<td class="labelSmallblue">USUARIO</td>
 			<td><sp:input path="login" /></td>
 		</tr>
 		<tr>
 			<td height="5px"></td>
 		</tr>
 		<tr>
-			<td class="labelSmallWhite">CLAVE</td>
+			<td class="labelSmallblue">CLAVE</td>
 			<td><sp:password path="clave" /></td>
 		</tr>
 		<tr>
