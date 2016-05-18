@@ -158,11 +158,6 @@ a:active {
 	white-space: nowrap;
 }
 
-.mundo {
-	background: transparent url(resources/img/mundo.gif) center no-repeat;
-	width: 100%;
-	height: 300px;
-}
 
 .labelSmall {
 	color: #A2E200;
@@ -173,6 +168,12 @@ a:active {
 
 .labelSmallBlack {
 	color: black;
+	font-family: monospace;
+	font-size: 15px;
+}
+
+.labelSmallWhite {
+	color: white;
 	font-family: monospace;
 	font-size: 15px;
 }
