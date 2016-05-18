@@ -26,7 +26,7 @@ public class SMSControler
 	public ModelAndView home()
 	{
 		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("usuario", new Usuario());
+		//modelAndView.addObject("usuario", new Usuario());
 		//ModelAndView modelAndView = new ModelAndView("login");
 		//modelAndView.addObject("usuario", new Usuario());
 		return modelAndView;
