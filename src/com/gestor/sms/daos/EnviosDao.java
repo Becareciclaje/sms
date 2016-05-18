@@ -1,9 +1,7 @@
 package com.gestor.sms.daos;
 
-import java.util.Iterator;
 import java.util.List;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
