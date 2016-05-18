@@ -24,7 +24,7 @@
 		</tr>		
 	</table>
 	
-	<h1 style="color: red;">${texto}</h1>
+	<h1 align="center"  style="color: red;">${texto}</h1>
 
 </sp:form>
 <jsp:include page="pie.jsp"></jsp:include>
