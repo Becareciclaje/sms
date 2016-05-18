@@ -9,6 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import com.gestor.sms.datos.Compra;
 import com.gestor.sms.datos.Cuenta;
 import com.gestor.sms.datos.Usuario;
 
@@ -25,6 +26,12 @@ public class ComprasDao extends GestorDao
 		criteria.add(Restrictions.in("usuarios", usuario));
 		List resultado=criteria.list();
 		cuentas.addAll(resultado);
+		
+	}
+
+	public void grabaCompra(Compra compra) throws Exception
+	{
+		getSession().saveOrUpdate(compra);
 		
 	}
 	
