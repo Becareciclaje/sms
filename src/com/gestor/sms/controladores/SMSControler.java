@@ -25,8 +25,19 @@ public class SMSControler
 	@RequestMapping("/")
 	public ModelAndView home()
 	{
+		ModelAndView modelAndView = new ModelAndView("home");
+		//modelAndView.addObject("usuario", new Usuario());
+		//ModelAndView modelAndView = new ModelAndView("login");
+		//modelAndView.addObject("usuario", new Usuario());
+		return modelAndView;
+	}
+	@RequestMapping("/login")
+	public ModelAndView login()
+	{
 		ModelAndView modelAndView = new ModelAndView("login");
-		modelAndView.addObject("usuario", new Usuario());
+		//modelAndView.addObject("usuario", new Usuario());
+		//ModelAndView modelAndView = new ModelAndView("login");
+		//modelAndView.addObject("usuario", new Usuario());
 		return modelAndView;
 	}
 
@@ -68,19 +79,26 @@ public class SMSControler
 		return modelAndView;
 	}
 	
+	//private String vacio = "       "; 
+	
 	@RequestMapping("/verLogin")
 	public ModelAndView verLogin(HttpServletRequest request,Usuario usuario)
-	{
-		ModelAndView modelAndView= new ModelAndView("login");
 		
-		try
+	{
+		
+		ModelAndView modelAndView= new ModelAndView("login");
+				try
+		
+		
 		{
 			getSmsServiceInterface().verUsuario(usuario);
 			request.getSession(true).setAttribute("usuario", usuario);
 			modelAndView.addObject("texto", "usuario no  es valido");
+	
 		} catch (UsuarioExisteException e)
 		{
 			// TODO Auto-generated catch block
+			
 			request.getSession(true).invalidate();
 			modelAndView.addObject("texto", "usuario  es valido");
 		}
@@ -95,7 +113,8 @@ public class SMSControler
 		return modelAndView;
 		
 		
-	}
+	} 
+	
 
 	public SMSServiceInterface getSmsServiceInterface()
 	{
