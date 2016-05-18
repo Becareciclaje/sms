@@ -10,7 +10,7 @@
 			<td width="55%" align="center" class="labelSmallWhite">Enviamos
 				SMS personalizados, masivos e individuales</td>
 			<td width="25%" align="left"><c:choose>
-					<c:when test="${empty usuario}">
+					<c:when test="${empty usuario || usuario.id eq 0}">
 						<a href="login" title="Login">Login</a>
 						<br>
 						<a href="registro" title="registro">Registrarse</a>
