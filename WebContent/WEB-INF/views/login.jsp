@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 	<sp:form action="verLogin" method="post" modelAttribute="usuario">
 
 		<table border="1">

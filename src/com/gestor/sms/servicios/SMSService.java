@@ -16,20 +16,10 @@ public class SMSService extends GestorService implements SMSServiceInterface
 	@SessionManager
 	public void registro(Registro registro) throws UsuarioExisteException
 	{
-		try
-		{
-			getSmsDao().verUsuario(registro.getUsuario());
-			altausuario(registro);
-			
-		} catch (UsuarioExisteException e)
-		{
-			throw e;
-		} catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
+		
+		getSmsDao().setSession(getGestorDao().getSession());
+		getSmsDao().registro(registro);
 	}
 
 	@SessionManager

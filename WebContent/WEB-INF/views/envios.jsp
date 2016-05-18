@@ -7,8 +7,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Envíos</title>
+
+<script type="text/javascript">
+
+function cargarDestinarios(i) {
+	if(i==0 || i==1)
+		{
+		document.getElementById('listadestinatarios').style.display = 'none';
+		document.getElementById('etiquetaSMS').style.display = 'none';
+		document.getElementById('telefonoIndividual').style.display = 'block';
+		}
+	else
+		{
+		document.getElementById('listadestinatarios').style.display = 'block';
+		document.getElementById('etiquetaSMS').style.display = 'block';
+		document.getElementById('telefonoIndividual').style.display = 'none';
+		}
+	document.getElementById("caracteres").value = "160";
+}
+
+function cuentaletras()
+{
+	document.getElementById("caracteres").value = 160 -
+		(document.getElementById('textoSMS').value.length + 1) ;
+}
+
+</script>
+
+
 </head>
 <body>
+
+	<sp:form modelAttribute="destinatarios" action="seleccionar">
 
 	<div>
 		<div class="linea">TIPO DE ENVÍO:</div>
@@ -22,50 +52,31 @@
 	</div>
 
 	Texto SMS a enviar:
-	<textarea rows="10" cols="80" id="textoSMS"></textarea>
-	caracteres disponibles: ${textoSMS.length()}
-
+	<textarea rows="10" cols="80" id="textoSMS" onkeydown="cuentaletras()"></textarea>
+	caracteres disponibles: <input id="caracteres" readonly="readonly"></input> 
+	 
 	<br>
 
-	<div style="border-style: solid; size: portrait">Para
-		personalizar el texto de su SMS introduzca "{nombre}" en el lugar
-		adecuado para que sea sustituido por el nombre de su destinatario</div>
+		<div id="etiquetaSMS" style="border-style: solid; size: portrait">Para
+			personalizar el texto de su SMS introduzca "{nombre}" en el lugar
+			adecuado para que sea sustituido por el nombre de su destinatario</div>
 
-	<br> Nº teléfono:
-	<input type="text" name="telefono">
+		<div id="telefonoIndividual" style="border-style: none; size: portrait">
+		<br> Nº teléfono: <input type="text" name="telefono">
+		</div>
 
-	<br>
+		<br>
 
-	<sp:form modelAttribute="destinatarios" action="seleccionar">
-		<div style="width: 450px; height: 80px; overflow: auto; border-style: solid">
+		<div id="listadestinatarios"
+			style="width: 450px; height: 100px; overflow: auto; border-style: solid">
 			<table>
-			
-<%-- 				<tr>
-					<td><input type="checkbox" name="destinatario.id"></td>
-					<td><input path="destinatario.nombre" /></td>
-
-
-						<td><sp:input path="destinatarios[${i}].telefono" /></td>
-						<td><sp:input path="destinatarios[${i}].nombre" /></td>
-
-				</tr>
- --%>				
-				<c:set var="i" value="0"></c:set>
-
-				<c:forEach var="i" begin="1" end="5" step="1"> 
+				<c:forEach items="${destinatarios }" var="destinatario">
 					<tr>
-						<td><sp:input path="${i}" /></td>
-					</tr>				
-				</c:forEach>
-				 
-				<!-- <c:forEach items="${destinatario}" var="destinatarios">  
-					<tr>
-						<td><sp:input path="${i}" /></td>
+						<td><input type="checkbox" value="destinatario.telefono"
+							name="destinatario.telefono"></td>
+						<td>${destinatario.nombre }</td>
 					</tr>
-
-					<c:set var="i" value="${i+1}"></c:set>
 				</c:forEach>
--->
 			</table>
 		</div>
 
