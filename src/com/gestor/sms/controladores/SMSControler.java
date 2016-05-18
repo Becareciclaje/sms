@@ -92,14 +92,15 @@ public class SMSControler
 		
 		{
 			getSmsServiceInterface().verUsuario(usuario);
-			request.getSession(true).setAttribute("usuario", usuario);
+			modelAndView.addObject("usuario", usuario);
 			modelAndView.addObject("texto", "usuario no  es valido");
 	
 		} catch (UsuarioExisteException e)
 		{
 			// TODO Auto-generated catch block
 			
-			request.getSession(true).invalidate();
+			//request.getSession(true).invalidate();
+			request.getSession(true).setAttribute("usuario", usuario);
 			modelAndView.addObject("texto", "usuario  es valido");
 		}
 		catch (Exception e)

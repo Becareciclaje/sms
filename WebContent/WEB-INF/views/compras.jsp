@@ -1,5 +1,11 @@
 
+<%@page import="com.gestor.sms.datos.Usuario"%>
 <%@taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+usuario:${session }
+<c:if test="${empty session.usuario || session.usuario.id eq 0  }">
+
+</c:if>
 <jsp:include page="cabecera.jsp"></jsp:include>
 
 	<sp:form modelAttribute="compra" action="grabaCompra">
