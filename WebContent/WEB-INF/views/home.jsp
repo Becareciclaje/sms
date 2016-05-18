@@ -5,9 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>cj:SMS</title>
-<jsp:include page="header.jsp"></jsp:include>
+
 </head>
 <body class="azul">
+<jsp:include page="header.jsp"></jsp:include>
 	<div class="inicio"></div>
 </body>
 </html>

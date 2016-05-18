@@ -23,14 +23,14 @@
 			</td>
 			<td width="55%"></td>
 			<td width="25%" align="left"><c:choose>
-					<c:when test="${empty nombreUsuario.id}">
+					<c:when test="${empty usuario}">
 						<a href="/login">Login</a>
 						<br>
 						<a href="/registro">Registrarse</a>
 					</c:when>
 					<c:otherwise>
 						<div class="nombreusuario">Bienvenido
-							${nombreUsuario.nombre}</div>
+							${usuario.login}</div>
 					</c:otherwise>
 				</c:choose></td>
 		</tr>				
@@ -38,9 +38,10 @@
 	
 		<div id="menu">
 			<ul id="nav">
-			<!--<c:set var="i" value="0"></c:set>
-			<c:forEach items="${nombreUsuario.rol}" var="rol">
-				<c:if test="${nombreUsuario.rol eq '1'}">-->
+		<c:set var="rolAdmin" value="ADMIN"/>
+		<c:set var="rolUser" value="USER"/>
+			<c:forEach items="${usuario.roles}" var="rol">
+				<c:if test="${rol.rol eq rolAdmin}">
 					<li>
 						<span>Cuenta</span>
 						<ul>
@@ -55,8 +56,8 @@
 							</li>
 						</ul>
 					</li>
-				<!--</c:if>
-				<c:if test="${nombreUsuario.rol eq '2'}">-->
+				</c:if>
+					<c:if test="${rol.rol eq rolUser}">
 					<li>
 						<span>Envíos</span>
 						<ul>
@@ -71,9 +72,9 @@
 							</li>
 						</ul>
 					</li>
-				<!--</c:if>
-				<c:set var="i" value="${i+1}"></c:set>
-			</c:forEach>-->
+				</c:if>
+				
+			</c:forEach>
 			</ul>
 		</div>
 	
