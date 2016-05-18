@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
+import com.gestor.sms.beans.Registro;
 import com.gestor.sms.datos.Usuario;
 import com.gestor.sms.excepciones.UsuarioExisteException;
 
@@ -25,6 +26,16 @@ public class SMSDao extends GestorDao
 			throw e;
 		}
 		if(usuarios.size()>0)
+			throw new UsuarioExisteException();
+		
+	}
+
+	public void registro(Registro registro) throws UsuarioExisteException {
+		// TODO Auto-generated method stub
+		Criteria criteria= getSession().createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("login", registro.getUsuario().getLogin()));
+		
+		if(!criteria.list().isEmpty())
 			throw new UsuarioExisteException();
 		
 	}
