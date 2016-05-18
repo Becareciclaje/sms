@@ -73,6 +73,7 @@ public class ComprasControler
 		try
 		{
 			List<Usuario> usuarios = new ArrayList<>();
+			
 			getComprasServiceInterface().cargaEntidadWithFilterProperty(usuarios, Usuario.class, "login", "fer");
 
 			getComprasServiceInterface().cargaCuentasByUsuario(cuentas, usuarios.get(0));
