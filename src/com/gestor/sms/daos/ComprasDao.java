@@ -1,9 +1,12 @@
 package com.gestor.sms.daos;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.SQLQuery;
+
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.gestor.sms.datos.Compra;
