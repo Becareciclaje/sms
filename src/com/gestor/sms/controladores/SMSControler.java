@@ -60,6 +60,7 @@ public class SMSControler
 		{
 			getSmsServiceInterface().registro(registro);
 			request.getSession(true).setAttribute("usuario", registro.getUsuario());
+			request.getSession(true).setAttribute("cuenta", registro.getCuenta());
 			modelAndView.setViewName("");
 			modelAndView.addObject("texto", "El usuario ha sido grabado correctamente");
 			
