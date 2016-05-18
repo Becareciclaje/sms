@@ -59,6 +59,13 @@ public class Cuenta implements Serializable {
 
 	public Cuenta() {
 	}
+	
+	@Override
+	public String toString()
+	{
+		// TODO Auto-generated method stub
+		return getNif()+" - "+getNombre();
+	}
 
 	public int getId() {
 		return this.id;

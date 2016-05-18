@@ -43,7 +43,8 @@ public class ComprasService extends GestorService implements ComprasServiceInter
 	{
 		
 		
-		
+		getComprasdao().setSession(getGestorDao().getSession());
+		getComprasdao().grabaCompra( compra);
 		
 	}
 

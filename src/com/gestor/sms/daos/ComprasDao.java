@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
 
+import com.gestor.sms.datos.Compra;
 import com.gestor.sms.datos.Cuenta;
 import com.gestor.sms.datos.Usuario;
 
@@ -50,6 +51,12 @@ public class ComprasDao extends GestorDao
 		}
 	
 		System.out.println("hola");
+	}
+
+	public void grabaCompra(Compra compra) throws Exception
+	{
+		getSession().saveOrUpdate(compra);
+		
 	}
 	
 
