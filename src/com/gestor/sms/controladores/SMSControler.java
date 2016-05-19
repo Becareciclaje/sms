@@ -45,7 +45,7 @@ public class SMSControler
 	public String logon(HttpServletRequest request)
 	{
 		  request.getSession(true).invalidate();
-		  return "home"; 
+		  return "home";  
 	}
 	
 	@RequestMapping(value = "/registro")
