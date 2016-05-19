@@ -23,7 +23,7 @@
 		</tr>
 	</table>
 
-	<div id="menu">
+	<div id="menu"> 
 		<ul id="nav">
 			<c:set var="rolAdmin" value="ADMIN" />
 			<c:set var="rolUser" value="USER" />
