@@ -97,15 +97,18 @@ select:hover {
 	background-color: #4d9af9;
 }
 /*fin optionbutton*/
-.inicio {
-	background-color: transparent;
+home {
+	background-color: #2B33D6;
 	background-image: url('mundo.gif');
 	background-repeat: no-repeat;
 	background-attachment: inherit;
 	width: 100%;
-	height: 500px;
-	position: fixed;
+	height: 100%;
+	position: absolute;
 	background-position: center;
+	z-index: -1;
+	top:0px;
+	left: 0px;
 }
 
 .header {
@@ -217,7 +220,7 @@ a:active {
 }
 
 body {
-	background-color: #cce6ff;
+	background-color: #cce6ff;	
 }
 
 .button {
@@ -339,4 +342,21 @@ footer {
 	z-index: 999999;
 	width: 99%;
 	background-color: #2B33D6;
+	  
+}
+
+header {
+	/*position: fixed;*/
+	z-index: 999999;
+	width: 100%;
+	background-color: #2B33D6;
+	
+}
+
+#contenedor {
+  min-width: 500px;
+  max-width: 9000px;
+  min-height: 10%;
+  max-height: 100%;
+  /*height: auto;*/
 }

@@ -57,7 +57,7 @@
 			</c:forEach>
 		</ul>
 	</div>
-	<div class="azul" style="height: 75px;"></div>
+	<div class="azul" style="height: 50px;"></div>
 
-	<div style="height: 25px;"></div>
+	
 </header>

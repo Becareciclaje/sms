@@ -1,7 +1,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
+
 <jsp:include page="cabecera.jsp"></jsp:include>
 	<div class="labelBigBlue" align="left" >REGISTRO</div>
 	<sp:form modelAttribute="registro" action="altaUsuario">

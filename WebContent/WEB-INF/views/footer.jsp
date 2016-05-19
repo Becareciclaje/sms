@@ -1,5 +1,5 @@
 <footer>
-	
+	<div id="menu"></div>
 	<div id="footer">
 		<div class="wrap">
 			<table style="width:100%;">
