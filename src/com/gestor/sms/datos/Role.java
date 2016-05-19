@@ -22,7 +22,7 @@ public class Role implements Serializable {
 	private String rol;
 
 	//bi-directional many-to-many association to Usuario
-	@ManyToMany(mappedBy="roles")
+	@ManyToMany(mappedBy="roles",fetch=FetchType.EAGER)
 	private List<Usuario> usuarios;
 
 	public Role() {

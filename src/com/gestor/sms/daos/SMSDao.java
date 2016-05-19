@@ -26,7 +26,6 @@ public class SMSDao extends GestorDao {
 		}
 		if (usuarios.size() > 0)
 		{
-			System.out.println(usuarios.get(0).getRoles().get(0).getRol());
 
 			usuario.setRoles(usuarios.get(0).getRoles());
 			throw new UsuarioExisteException();
