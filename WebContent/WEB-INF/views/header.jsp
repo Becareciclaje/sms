@@ -8,9 +8,10 @@
 				class="labelMedium">S</label>
 			</td>
 			<td width="55%" align="center" class="labelSmallWhite">Enviamos
-				SMS personalizados, masivos e individuales</td>
-			<td width="25%" align="left"><c:choose>
-					<c:when test="${empty usuario || usuario.id eq 0}">
+				SMS personalizados, masivos e individuales </td>
+			<td width="25%" align="left">
+			<c:choose>
+					<c:when test="${empty sessionScope.usuario}">
 						<a href="login" title="Login">Login</a>
 						<br>
 						<a href="registro" title="registro">Registrarse</a>
@@ -26,7 +27,7 @@
 		<ul id="nav">
 			<c:set var="rolAdmin" value="ADMIN" />
 			<c:set var="rolUser" value="USER" />
-			<c:forEach items="${usuario.roles}" var="rol">
+			<c:forEach items="${sessionScope.usuario.roles}" var="rol">
 				<c:if test="${rol.rol eq rolAdmin}">
 					<li><span>Cuenta</span>
 						<ul>

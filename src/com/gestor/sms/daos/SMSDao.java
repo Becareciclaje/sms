@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.criterion.Restrictions;
 
 import com.gestor.sms.beans.Registro;
@@ -16,14 +17,19 @@ public class SMSDao extends GestorDao {
 		List<Usuario> usuarios = new ArrayList<>();
 		try {
 			Criteria criteria = getSession().createCriteria(Usuario.class);
+			
 			criteria.add(Restrictions.eq("login", usuario.getLogin()));
 			criteria.add(Restrictions.eq("clave", usuario.getClave()));
 			usuarios = criteria.list();
+			System.out.println(usuarios.get(0).getRoles().get(0).getRol());
 		} catch (Exception e) {
 			throw e;
 		}
 		if (usuarios.size() > 0)
+		{
+			usuario.setRoles(usuarios.get(0).getRoles());
 			throw new UsuarioExisteException();
+		}
 
 	}
 
