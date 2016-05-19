@@ -1,12 +1,16 @@
 package com.gestor.sms.servicios;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.gestor.sms.anotaciones.SessionManager;
 import com.gestor.sms.daos.EnviosDao;
 import com.gestor.sms.datos.Cuenta;
 import com.gestor.sms.datos.Destinatario;
+import com.gestor.sms.datos.Envio;
 import com.gestor.sms.datos.Usuario;
 
 
@@ -26,16 +30,6 @@ public class EnviosService extends GestorService implements EnviosServiceInterfa
 		destinatarios.addAll(cuentas.get(0).getDestinatarios());
 	}
 
-	public EnviosDao getEnviosDao()
-	{
-		return enviosDao;
-	}
-
-	public void setEnviosDao(EnviosDao enviosDao)
-	{
-		this.enviosDao = enviosDao;
-	}
-	
 	@Override
 	@SessionManager
 	public void cargaEntidadWithFilterProperty(List<?> datos, Class<?> clase, String property, Object value)
@@ -53,5 +47,60 @@ public class EnviosService extends GestorService implements EnviosServiceInterfa
 		
 	}
 
+	@Override
+	@SessionManager
+	public void grabaEnvios(HttpServletRequest request,Usuario usuario)
+	{
+		String tipoEnvio = (String) request.getParameter("envios"); 
+		String telefono = request.getParameter("telefono");
+		String mensaje = request.getParameter("textoSMS");
+		String[] telefonos = request.getParameterValues("telefonos");
 
+		System.out.println(tipoEnvio+"::"+telefono+"::"+mensaje);
+		for (int i = 0; i < telefonos.length; i++)
+		{
+			System.out.println(telefonos[i]);
+		}
+				
+		
+		Envio envio = new Envio();
+		
+		if(tipoEnvio=="1") // individual
+		{
+		
+			envio.setFecha(new Date());
+			envio.setTelefono(telefono);
+			envio.setTextoSMS(mensaje);
+			envio.setIndiicadorEnvio(null);
+			envio.setFechaEnvio(null);
+			getGestorDao().grabaDato(envio);
+		}
+		else
+		{
+			for (int i = 0; i < telefonos.length; i++)
+			{
+				envio = new Envio();
+				envio.setFecha(new Date());
+				envio.setTelefono(telefonos[i]);
+				envio.setTextoSMS(mensaje);
+				envio.setIndiicadorEnvio(null);
+				envio.setFechaEnvio(null);
+				
+				getGestorDao().grabaDato(envio);
+
+			}
+		}
+		
+	}
+
+	public EnviosDao getEnviosDao()
+	{
+		return enviosDao;
+	}
+
+	public void setEnviosDao(EnviosDao enviosDao)
+	{
+		this.enviosDao = enviosDao;
+	}
+	
 }

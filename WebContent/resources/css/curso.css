@@ -189,6 +189,12 @@ a:active {
 	white-space: nowrap;
 }
 
+.labelMediumWhite {
+	color: white;
+	font-family: monospace;
+	font-size: 30px;	
+}
+
 .labelBig {
 	color: #A2E200;
 	font-family: monospace;
@@ -201,7 +207,7 @@ a:active {
 .labelBigBlue {
 	color: #2B33D6;
 	font-family: monospace;
-	font-size: 65px;
+	font-size: 30px;
 	font-weight: bold;
 	text-shadow: 0 -2px 0 white;
 	white-space: nowrap;
