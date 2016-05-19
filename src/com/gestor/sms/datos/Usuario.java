@@ -2,6 +2,10 @@ package com.gestor.sms.datos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.eclipse.persistence.annotations.JoinFetch;
+import org.eclipse.persistence.annotations.JoinFetchType;
+
 import java.util.List;
 
 
@@ -24,7 +28,8 @@ public class Usuario implements Serializable {
 	private String login;
 
 	//bi-directional many-to-many association to Cuenta
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany
+	
 	@JoinTable(
 		name="cuentas_has_usuarios"
 		, joinColumns={
@@ -38,6 +43,7 @@ public class Usuario implements Serializable {
 
 	//bi-directional many-to-many association to Role
 	@ManyToMany
+	
 	@JoinTable(
 		name="usuarios_has_roles"
 		, joinColumns={

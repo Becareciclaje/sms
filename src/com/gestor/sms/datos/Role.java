@@ -2,6 +2,9 @@ package com.gestor.sms.datos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.eclipse.persistence.annotations.JoinFetch;
+
 import java.util.List;
 
 
@@ -22,7 +25,8 @@ public class Role implements Serializable {
 	private String rol;
 
 	//bi-directional many-to-many association to Usuario
-	@ManyToMany(mappedBy="roles",fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="roles")
+
 	private List<Usuario> usuarios;
 
 	public Role() {
