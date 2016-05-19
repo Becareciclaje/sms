@@ -1,8 +1,17 @@
 package com.gestor.sms.datos;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
@@ -25,6 +34,7 @@ public class Usuario implements Serializable {
 
 	//bi-directional many-to-many association to Cuenta
 	@ManyToMany
+	
 	@JoinTable(
 		name="cuentas_has_usuarios"
 		, joinColumns={
@@ -38,6 +48,7 @@ public class Usuario implements Serializable {
 
 	//bi-directional many-to-many association to Role
 	@ManyToMany
+	
 	@JoinTable(
 		name="usuarios_has_roles"
 		, joinColumns={

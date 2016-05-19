@@ -1,8 +1,15 @@
 package com.gestor.sms.datos;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
@@ -23,6 +30,7 @@ public class Role implements Serializable {
 
 	//bi-directional many-to-many association to Usuario
 	@ManyToMany(mappedBy="roles")
+
 	private List<Usuario> usuarios;
 
 	public Role() {

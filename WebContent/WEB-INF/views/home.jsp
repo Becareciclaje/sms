@@ -1,6 +1,5 @@
 
 <jsp:include page="cabecera.jsp"></jsp:include>
-
-<div class="inicio"></div>
-
+<home>
+</home>
 <jsp:include page="pie.jsp"></jsp:include>

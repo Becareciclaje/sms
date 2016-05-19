@@ -41,6 +41,13 @@ public class SMSControler
 		return modelAndView;
 	}
 
+	@RequestMapping("logon")
+	public String logon(HttpServletRequest request)
+	{
+		  request.getSession(true).invalidate();
+		  return "home";  
+	}
+	
 	@RequestMapping(value = "/registro")
 	public ModelAndView registro()
 	{
@@ -67,7 +74,7 @@ public class SMSControler
 		} catch (UsuarioExisteException e)
 		{
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 			modelAndView.setViewName("registro");
 			modelAndView.addObject("texto", "Error: el usuario ya existe");
 		}
@@ -89,11 +96,10 @@ public class SMSControler
 		
 		ModelAndView modelAndView= new ModelAndView("login");
 				try
-		
-		
+				
 		{
 			getSmsServiceInterface().verUsuario(usuario);
-			modelAndView.addObject("usuario", usuario);
+			request.getSession(true).invalidate();
 			modelAndView.addObject("texto", "usuario no  es valido");
 	
 		} catch (UsuarioExisteException e)
@@ -104,6 +110,9 @@ public class SMSControler
 			request.getSession(true).setAttribute("usuario", usuario);
 			modelAndView.setViewName("home");
 			modelAndView.addObject("texto", "usuario  es valido");
+			modelAndView.setViewName("home");
+			
+			
 		}
 		catch (Exception e)
 		{
@@ -112,7 +121,7 @@ public class SMSControler
 			modelAndView.addObject("texto", "problemas de conexion");
 		}
 		
-		
+
 		return modelAndView;
 		
 		
