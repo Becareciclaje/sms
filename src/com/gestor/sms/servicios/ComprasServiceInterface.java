@@ -11,5 +11,6 @@ public interface ComprasServiceInterface extends GestorServiceInterface
 
 	public void cargaCuentasByUsuario(List<Cuenta> cuentas, Usuario usuario) throws Exception;
 	public void grabaCompra(Compra compra) throws Exception;
+	public void getListaCompras(Cuenta cuenta, List<Compra> compras) throws Exception;
 
 }

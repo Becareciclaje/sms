@@ -26,6 +26,25 @@ public class ComprasControler
 	@Autowired
 	private ComprasServiceInterface comprasServiceInterface;
 
+	@RequestMapping("/listaCompras")
+	public ModelAndView listaCompras(HttpServletRequest request, Compra compra)
+	{
+		ModelAndView modelAndView =new ModelAndView("listaCompras");
+		Usuario usuario=(Usuario) request.getSession(true).getAttribute("usuario");
+		List<Compra> compras= null;
+		try
+		{
+			getComprasServiceInterface().getListaCompras(compra.getCuenta(), compras);
+			modelAndView.addObject("compras", compras);
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return modelAndView;
+	}
+	
+	
 	@RequestMapping("/grabaCompra")
 	public ModelAndView grabaCompra(Compra compra)
 	{

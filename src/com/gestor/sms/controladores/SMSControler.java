@@ -41,6 +41,13 @@ public class SMSControler
 		return modelAndView;
 	}
 
+	@RequestMapping("logon")
+	public String logon(HttpServletRequest request)
+	{
+		  request.getSession(true).invalidate();
+		  return "home";  
+	}
+	
 	@RequestMapping(value = "/registro")
 	public ModelAndView registro()
 	{
@@ -89,8 +96,7 @@ public class SMSControler
 		
 		ModelAndView modelAndView= new ModelAndView("login");
 				try
-		
-		
+				
 		{
 			getSmsServiceInterface().verUsuario(usuario);
 			request.getSession(true).invalidate();
@@ -102,6 +108,7 @@ public class SMSControler
 			
 			//request.getSession(true).invalidate();
 			request.getSession(true).setAttribute("usuario", usuario);
+			modelAndView.setViewName("home");
 			modelAndView.addObject("texto", "usuario  es valido");
 			modelAndView.setViewName("home");
 			
