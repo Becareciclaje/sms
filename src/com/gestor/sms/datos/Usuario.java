@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
 	private String login;
 
 	//bi-directional many-to-many association to Cuenta
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
 		name="cuentas_has_usuarios"
 		, joinColumns={

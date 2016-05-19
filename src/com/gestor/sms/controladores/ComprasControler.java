@@ -59,12 +59,13 @@ public class ComprasControler
 	@RequestMapping("compras")
 	public ModelAndView compras(HttpServletRequest request)
 	{
+		
 
-		/*
-		 * if(request.getSession(true).getAttribute("usuario")==null) {
-		 * request.getSession(true).invalidate(); return new ModelAndView("/");
-		 * }
-		 */
+		
+		  if(request.getSession(true).getAttribute("usuario")==null) {
+		  request.getSession(true).invalidate();
+		  return new ModelAndView("home");
+		  }
 		Usuario usuario = (Usuario) request.getSession(true).getAttribute("usuario");
 
 		ModelAndView modelAndView = new ModelAndView("compras");
@@ -73,7 +74,8 @@ public class ComprasControler
 		try
 		{
 			List<Usuario> usuarios = new ArrayList<>();
-			getComprasServiceInterface().cargaEntidadWithFilterProperty(usuarios, Usuario.class, "login", "fer");
+			
+			getComprasServiceInterface().cargaEntidadWithFilterProperty(usuarios, Usuario.class, "login", usuario.getLogin());
 
 			getComprasServiceInterface().cargaCuentasByUsuario(cuentas, usuarios.get(0));
 

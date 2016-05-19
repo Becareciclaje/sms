@@ -2,47 +2,20 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Envíos</title>
+<jsp:include page="cabecera.jsp"></jsp:include>
+	<sp:form modelAttribute="destinatarios" action="seleccionar" method="GET" methodParam="GET">
 
-<script type="text/javascript">
+		<div>
 
-function cargarDestinarios(i) {
-	if(i==0 || i==1)
-		{
-		document.getElementById('listadestinatarios').style.display = 'none';
-		document.getElementById('etiquetaSMS').style.display = 'none';
-		document.getElementById('telefonoIndividual').style.display = 'block';
-		}
-	else
-		{
-		document.getElementById('listadestinatarios').style.display = 'block';
-		document.getElementById('etiquetaSMS').style.display = 'block';
-		document.getElementById('telefonoIndividual').style.display = 'none';
-		}
-	document.getElementById("caracteres").value = "160";
-}
+			<div class="linea">SELECCIONE CUENTA</div>
+			<sp:select id="Cuenta" class="linea" items="${cuentas }"  itemValue="id" path="cuenta.id"> 
+			</sp:select>
+		</div>
 
-function cuentaletras()
-{
-	document.getElementById("caracteres").value = 160 -
-		(document.getElementById('textoSMS').value.length + 1) ;
-}
-
-</script>
-
-
-</head>
-<body>
-
-	<sp:form modelAttribute="destinatarios" action="seleccionar">
 
 	<div>
 		<div class="linea">TIPO DE ENVÍO:</div>
-		<select id="envios" onchange="cargarDestinarios(this.value)"
+		<select id="envios" name="envios" onchange="cargarDestinarios(this.value)"
 			class="linea">
 			<option value="0">Selecciona Tipo de Envío...</option>
 			<option value="1">individual</option>
@@ -52,7 +25,7 @@ function cuentaletras()
 	</div>
 
 	Texto SMS a enviar:
-	<textarea rows="10" cols="80" id="textoSMS" onkeydown="cuentaletras()"></textarea>
+	<textarea rows="10" cols="80" id="textoSMS" name="textoSMS" onkeydown="cuentaletras()"></textarea>
 	caracteres disponibles: <input id="caracteres" readonly="readonly"></input> 
 	 
 	<br>
@@ -72,8 +45,8 @@ function cuentaletras()
 			<table>
 				<c:forEach items="${destinatarios }" var="destinatario">
 					<tr>
-						<td><input type="checkbox" value="destinatario.telefono"
-							name="destinatario.telefono"></td>
+						<td><input type="checkbox" value="${destinatario.telefono }"
+							name="telefonos"></td>
 						<td>${destinatario.nombre }</td>
 					</tr>
 				</c:forEach>
@@ -85,6 +58,6 @@ function cuentaletras()
 		</div>
 
 	</sp:form>
-</body>
 
-</html>
+<jsp:include page="pie.jsp"></jsp:include>
+
