@@ -73,6 +73,7 @@
 	-webkit-border-radius: 10px;
 	color: white;
 	width: 280px;
+	display: block;
 }
 
 /*select button*/
@@ -215,7 +216,7 @@ a:active {
 	background-color: #2B33D6;
 }
 
-.body {
+body {
 	background-color: #cce6ff;
 }
 
