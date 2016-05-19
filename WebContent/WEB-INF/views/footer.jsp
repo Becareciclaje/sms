@@ -2,11 +2,11 @@
 	
 	<div id="footer">
 		<div class="wrap">
-			<table width="100%">
+			<table style="width:100%;">
 				<tr>
 					<td class="labelSmallWhite" align="center">Contacta con
 						nosotros a través de un SMS al 666 666 666 o en nuestras redes
-						solciales</td>
+						sociales</td>
 				</tr>
 				<tr>
 					<td height="25px"></td>

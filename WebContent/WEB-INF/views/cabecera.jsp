@@ -11,5 +11,5 @@
 <link href="resources/css/curso.css" rel="stylesheet">
 <script type="text/javascript" src="resources/js/envios.js"></script>
 </head>
-<body>
+<body> 
 	<jsp:include page="header.jsp"></jsp:include>

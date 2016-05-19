@@ -3,7 +3,7 @@
 <jsp:include page="cabecera.jsp"></jsp:include>
 <sp:form action="verLogin" method="post" modelAttribute="usuario">
 <div class="labelBigBlue" align="left" >LOGIN</div>
-	<table align="center">
+	<table style="align:center;">
 		<tr>
 			<td class="labelSmallblue">USUARIO</td>
 			<td><sp:input path="login" /></td>

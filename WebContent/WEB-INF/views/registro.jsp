@@ -5,7 +5,7 @@
 <jsp:include page="cabecera.jsp"></jsp:include>
 	<div class="labelBigBlue" align="left" >REGISTRO</div>
 	<sp:form modelAttribute="registro" action="altaUsuario">
-		<table align="center">
+		<table style="align:center;">
 		    <tr>
 				<td class="labelSmallblue">USUARIO</td>
 				<td><sp:input path="usuario.login" /></td>

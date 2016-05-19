@@ -1,8 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <header>
-	<table width="100%" class="azul">
+	<table style="width:100%;" class="azul">
 		<tr>
-			<td align="center" width="20%">
+			<td align="center" style="width:20%;">
 				<div class="header"></div> <br> <label class="labelSmall">cj:</label>
 				<label class="labelMedium">S</label> <label class="labelBig">M</label><label
 				class="labelMedium">S</label>
