@@ -21,12 +21,13 @@ public class SMSDao extends GestorDao {
 			criteria.add(Restrictions.eq("login", usuario.getLogin()));
 			criteria.add(Restrictions.eq("clave", usuario.getClave()));
 			usuarios = criteria.list();
-			System.out.println(usuarios.get(0).getRoles().get(0).getRol());
 		} catch (Exception e) {
 			throw e;
 		}
 		if (usuarios.size() > 0)
 		{
+			System.out.println(usuarios.get(0).getRoles().get(0).getRol());
+
 			usuario.setRoles(usuarios.get(0).getRoles());
 			throw new UsuarioExisteException();
 		}
