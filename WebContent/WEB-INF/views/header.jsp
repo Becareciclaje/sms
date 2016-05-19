@@ -31,28 +31,14 @@
 				<c:if test="${rol.rol eq rolAdmin}">
 					<li><span>Cuenta</span>
 						<ul>
-<<<<<<< HEAD
+
 							<li><a href="#">Mantenimiento Cuenta</a></li>
 							<li><a href="#">Destinatarios</a></li>
 							<li><a href="compras" title="Compra SMS">Compra SMS</a>
 							<li><a href="listaCompras" title="Compra SMS">Listado de Compras</a>
 							</li>
-						</ul></li>
-=======
-							<li><a href="#">Autorizar Cliente</a></li>							
-							<li><a href="#">Precios SMS</a></li>
-							<li><a href="#">Horarios Envío SMS</a></li>							
 						</ul>
-					</li>
->>>>>>> branch 'HEAD' of https://github.com/Becareciclaje/sms.git
-				</c:if>
-				<c:if test="${rol.rol eq rolUser}">
-					<li><span>Cuenta</span>
-						<ul>
-							<li><a href="#">Mantenimiento Cuenta</a></li>
-							<li><a href="#">Destinatarios</a></li>
-							<li><a href="compras" title="Compra SMS">Compra SMS</a></li>
-						</ul>
+				
 					</li>				
 					<li><span>Envíos</span>
 						<ul>

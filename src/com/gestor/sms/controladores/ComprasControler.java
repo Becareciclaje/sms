@@ -29,9 +29,36 @@ public class ComprasControler
 	@RequestMapping("/listaCompras")
 	public ModelAndView listaCompras(HttpServletRequest request, Compra compra)
 	{
+		
 		ModelAndView modelAndView =new ModelAndView("listaCompras");
-		Usuario usuario=(Usuario) request.getSession(true).getAttribute("usuario");
-		List<Compra> compras= null;
+		Usuario usuario = (Usuario) request.getSession(true).getAttribute("usuario");
+
+		
+		List<Cuenta> cuentas = new ArrayList<>();
+
+		try
+		{
+			List<Usuario> usuarios = new ArrayList<>();
+			
+			getComprasServiceInterface().cargaEntidadWithFilterProperty(usuarios, Usuario.class, "login", usuario.getLogin());
+
+			getComprasServiceInterface().cargaCuentasByUsuario(cuentas, usuarios.get(0));
+
+			modelAndView.addObject("cuentas", cuentas);
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(compra.getCuenta()==null)
+		{
+			modelAndView.addObject("compra", new Compra());
+			
+			
+			return modelAndView;
+		}
+		
+		List<Compra> compras= new ArrayList<>();
 		try
 		{
 			getComprasServiceInterface().getListaCompras(compra.getCuenta(), compras);
