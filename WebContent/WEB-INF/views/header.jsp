@@ -18,6 +18,8 @@
 					</c:when>
 					<c:otherwise>
 						<div class="labelSmallWhite">Bienvenido ${usuario.login}</div>
+						<br>
+						<a href="login" title="Salir">Salir</a>
 					</c:otherwise>
 				</c:choose></td>
 		</tr>
@@ -57,7 +59,7 @@
 			</c:forEach>
 		</ul>
 	</div>
-	<div class="azul" style="height: 50px;"></div>
+	<div class="rojo" style="height: 50px;"></div>
 
 	
 </header>
