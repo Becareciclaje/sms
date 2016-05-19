@@ -15,7 +15,8 @@
 			<option value="${cuenta.id }">${cuenta.nif }-
 				${cuenta.nombre }</option>
 		</c:forEach>
-	</select>
+	</select> 
+	
 	<br>
 
 	<br>

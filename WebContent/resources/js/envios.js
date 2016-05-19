@@ -1,21 +1,16 @@
 
 function cargarDestinarios(id) {
 	// para invocar a AJAX
-	$.ajax({
-		url : 'envios' ,
-		dataType : 'json',
-		success : function(json) {
-			$("#listadestinatarios").html("<input type='checkbox' id='cbgroup1_master' onchange=\"togglecheckboxes(this,'telefonos[]')\"> Toggle All");
-			$("#listadestinatarios").append("<table border=\"1\">");
-			$("#listadestinatarios").append("<c:forEach items=\"${destinatarios }\" var=\"destinatario\">");
-			$("#listadestinatarios").append("<tr><td width=\"10\"><input type=\"checkbox\" value=\"${destinatario.telefono }\" name=\"telefonos[]\"></td>");
-			$("#listadestinatarios").append("<td width=\"200\">${destinatario.nombre }</td>");
-			$("#listadestinatarios").append("</tr></c:forEach></table>");
-		},
-		error : function() {
-			alert("se ha producido un error")
-		}
-	});
+	
+	//alert("Before Ajax..!");
+	
+	$.ajax({  
+        type : 'GET',  
+        url : "/destinatarios",  
+
+    });	
+
+	alert("Despues Ajax..!");
 }
 
 /*
