@@ -42,7 +42,10 @@ public class SMSDao extends GestorDao {
 
 			throw new UsuarioExisteException();
 		else
-			getSession().saveOrUpdate(registro);
+		{
+			getSession().saveOrUpdate(registro.getUsuario());
+			getSession().saveOrUpdate(registro.getCuenta());
+		}
 		    
 
 	}

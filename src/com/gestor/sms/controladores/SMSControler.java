@@ -67,7 +67,7 @@ public class SMSControler
 		} catch (UsuarioExisteException e)
 		{
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 			modelAndView.setViewName("registro");
 			modelAndView.addObject("texto", "Error: el usuario ya existe");
 		}
