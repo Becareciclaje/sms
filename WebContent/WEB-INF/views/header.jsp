@@ -31,20 +31,27 @@
 				<c:if test="${rol.rol eq rolAdmin}">
 					<li><span>Cuenta</span>
 						<ul>
-							<li><a href="#">Mantenimiento Cuenta</a></li>
-							<li><a href="#">Destinatarios</a></li>
-							<li><a href="compras" title="Compra SMS">Compra SMS</a>
-							</li>
-						</ul></li>
+							<li><a href="#">Autorizar Cliente</a></li>							
+							<li><a href="#">Precios SMS</a></li>
+							<li><a href="#">Horarios Envío SMS</a></li>							
+						</ul>
+					</li>
 				</c:if>
 				<c:if test="${rol.rol eq rolUser}">
+					<li><span>Cuenta</span>
+						<ul>
+							<li><a href="#">Mantenimiento Cuenta</a></li>
+							<li><a href="#">Destinatarios</a></li>
+							<li><a href="compras" title="Compra SMS">Compra SMS</a></li>
+						</ul>
+					</li>				
 					<li><span>Envíos</span>
 						<ul>
 							<li><a href="#">Directos</a></li>
 							<li><a href="#">Clientes</a></li>
-							<li><a href="envios" title="Envíos SMS">Envíos SMS</a>
-							</li>
-						</ul></li>
+							<li><a href="envios" title="Envíos SMS">Envíos SMS</a></li>
+						</ul>					
+					</li>					
 				</c:if>
 
 			</c:forEach>
