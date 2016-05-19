@@ -3,7 +3,9 @@ package com.gestor.sms.daos;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.gestor.sms.datos.Compra;
@@ -55,6 +57,15 @@ public class ComprasDao extends GestorDao
 	{
 		getSession().saveOrUpdate(compra);
 
+	}
+
+	public void getListaCompras(Cuenta cuenta, List<Compra> compras) throws Exception
+	{
+		Cuenta cuenta2= getSession().load(Cuenta.class, cuenta.getId()); 
+		Criteria criteria=getSession().createCriteria(Compra.class);
+		criteria.add(Restrictions.eq("cuenta", cuenta2));
+		compras.addAll(criteria.list());
+		
 	}
 
 }

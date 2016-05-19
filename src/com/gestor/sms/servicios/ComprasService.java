@@ -48,11 +48,7 @@ public class ComprasService extends GestorService implements ComprasServiceInter
 		
 	}
 
-	private void invocarPorReflection(ComprasDao comprasdao2, String cuenta, String cantidad)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public ComprasDao getComprasdao()
 	{
@@ -62,6 +58,15 @@ public class ComprasService extends GestorService implements ComprasServiceInter
 	public void setComprasdao(ComprasDao comprasdao)
 	{
 		this.comprasdao = comprasdao;
+	}
+
+	@Override
+	@TransactionManager
+	public void getListaCompras(Cuenta cuenta, List<Compra> compras) throws Exception
+	{
+		getComprasdao().setSession(getGestorDao().getSession());
+		getComprasdao().getListaCompras(cuenta, compras);
+		
 	}
 
 	

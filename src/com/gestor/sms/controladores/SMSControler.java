@@ -102,6 +102,7 @@ public class SMSControler
 			
 			//request.getSession(true).invalidate();
 			request.getSession(true).setAttribute("usuario", usuario);
+			modelAndView.setViewName("home");
 			modelAndView.addObject("texto", "usuario  es valido");
 		}
 		catch (Exception e)

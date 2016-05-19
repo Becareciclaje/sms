@@ -34,6 +34,7 @@
 							<li><a href="#">Mantenimiento Cuenta</a></li>
 							<li><a href="#">Destinatarios</a></li>
 							<li><a href="compras" title="Compra SMS">Compra SMS</a>
+							<li><a href="listaCompras" title="Compra SMS">Listado de Compras</a>
 							</li>
 						</ul></li>
 				</c:if>
