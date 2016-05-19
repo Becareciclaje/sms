@@ -1,10 +1,10 @@
 <%@page import="com.gestor.sms.datos.Usuario"%>
 <%@taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
 <jsp:include page="cabecera.jsp"></jsp:include>
-<div id="contenedor">
+
 <sp:form action="verLogin" method="post" modelAttribute="usuario">
 
-<div class="labelBigBlue" align="left" >LOGIN</div>
+	<div class="labelBigBlue" align="left">LOGIN</div>
 	<table align="center">
 		<tr>
 			<td class="labelSmallblue">USUARIO</td>
@@ -22,14 +22,14 @@
 			<td height="5px"></td>
 		</tr>
 		<tr>
-			<td colspan="2"  align="center"><input type="submit"
+			<td colspan="2" align="center"><input type="submit"
 				class="button" value="ENVIAR"></td>
-		</tr>		
+		</tr>
 	</table>
-	
+
 	<h1 align="center" style="color: red;">${texto}</h1>
 
 </sp:form>
-</div>
+
 <jsp:include page="pie.jsp"></jsp:include>
 
