@@ -28,7 +28,7 @@
 	margin: 0px 10px;
 	position: relative;
 	padding: 10px;
-	width: 200px;
+	width: 280px;
 }
 
 #nav li ul {
@@ -172,6 +172,15 @@ a:active {
 	color: #2B33D6;
 	font-family: monospace;
 	font-size: 15px;
+}
+
+.labelMediumblue {
+	color: #2B33D6;
+	font-family: monospace;
+	font-size: 30px;
+	font-weight: bold;
+	text-shadow: 0 2px 0 white;
+	white-space: nowrap;	
 }
 
 .labelSmallWhite {
