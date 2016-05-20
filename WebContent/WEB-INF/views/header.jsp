@@ -46,6 +46,7 @@
 							<li><a href="#">Mantenimiento Cuenta</a></li>
 							<li><a href="#">Destinatarios</a></li>
 							<li><a href="compras" title="Compra SMS">Compra SMS</a></li>
+							<li><a href="listaCompras" title="Compra SMS">Listado Compra SMS</a></li>
 						</ul> 
 					</li>
 					<li><span>Envíos</span>

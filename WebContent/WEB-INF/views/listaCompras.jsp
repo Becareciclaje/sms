@@ -11,8 +11,7 @@ usuario:${session }
 
 	<sp:form modelAttribute="compra" action="listaCompras">
 		<div>
-
-			
+		
 			<sp:select id="Cuenta" class="linea" 
 				 path="cuenta.id" >
 				<sp:option value="0">Selecciona cuenta...</sp:option>
