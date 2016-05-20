@@ -4,62 +4,101 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <jsp:include page="cabecera.jsp"></jsp:include>
 <br>
-<sp:form modelAttribute="destinatarios" action="envios"
+<sp:form modelAttribute="envio" action="envios"
 	method="GET" methodParam="GET">
 <div class="labelBigBlue" align="left">ENVÍO SMS</div>
+<sp:form modelAttribute="destinatarios" action="envios" method="GET"
+	methodParam="GET">
+	<div class="labelBigBlue" align="left">ENVÍO SMS</div>
 	<table align="center" >
 		<tr>
 			<td class="labelSmallblue">TIPO DE ENVÍO:</td>
-			<td>
-				<select id="envios" name="envios"
-					onchange="arreglacapa(this.value)" class="linea">
+			<td><select id="envios" name="envios"
+				onchange="arreglacapa(this.value)" class="linea">
 					<option value="0">Selecciona...</option>
 					<option value="1">individual</option>
 					<option value="2">masivo</option>
 					<option value="3">personalizado</option>
-				</select>					
-			</td>
+			</select></td>
 		</tr>
 		<tr>
 			<td class="labelSmallblue">CUENTA:</td>
 			<td align="center">
-				<select id="Cuenta" name="Cuenta" class="linea" items="${cuentas }" itemValue="id"
+				<sp:select id="Cuenta" name="Cuenta" class="linea" items="${envio.cuentas }" itemValue="id"
 					path="cuenta.id" width="200">
+			<td><select id="Cuenta" name="Cuenta" class="linea"
+				items="${cuentas }" itemValue="id" path="cuenta.id" width="200">
+					
+				</sp:select> 	
 					<c:forEach items="${cuentas }" var="cuenta">
 						<option value="${cuenta.id }">${cuenta.nif }-
 							${cuenta.nombre }</option>
 					</c:forEach>
-				</select> 	
-			</td>
+			</select></td>
 		</tr>
-	</table>
-	<div>
-		<input type="submit" class="button"  value="BUSCAR DESTINATARIOS">
-	</div>
-	
-</sp:form>
-
-<sp:form modelAttribute="destinatarios" action="seleccionar"
-	method="GET" methodParam="GET">
-	
-	<input type="text" name="idCuenta" value="${cuenta }">
-	<input type="text" name="envios" value="${tipoenvio }">
-	
-	<table align="center" >
 		<tr>
-			<td class="labelSmallblue">Texto SMS a enviar:</td>
-			<td>
-				
-				<label class="labelSmallblue">caracteres disponibles: </label><input id="caracteres" readonly="readonly"></input>
-				<br>
-				<textarea rows="10" cols="80" id="textoSMS" name="textoSMS" onkeydown="cuentaletras()"></textarea>
-			</td>
-		</tr>	
+			<td height="5px"></td>
+		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<div class="labelSmallblue" id="etiquetaSMS" style="border-style: solid; size: portrait">Para
-					personalizar el texto de su SMS introduzca "{nombre}" en el lugar
-					adecuado para que sea sustituido por el nombre de su destinatario</div>
+				<input type="submit" class="button" value="BUSCAR DESTINATARIOS">
+			</td>
+		</tr>
+		<tr>
+			<td height="5px"></td>
+		</tr>
+	</table>
+</sp:form>
+
+<sp:form modelAttribute="envio" action="seleccionar"
+	method="GET" methodParam="GET">
+
+	<!--  <input type="text" name="idCuenta" value="${cuenta }">
+	<input type="text" name="envios" value="${tipoenvio }">-->
+
+	<table align="center" >
+		<tr>
+			<td class="labelSmallblue">TEXTO SMS A ENVIAR:</td>
+			<td><label class="labelSmallblue">CARÁCTERES DISPONIBLES
+			</label><label class="labelSmallblue" id="caracteres">160</label> <!--  <input id="caracteres" readonly="readonly"></input>-->
+				<br> <br> <textarea rows="10" cols="80" id="textoSMS"
+					name="textoSMS" onkeydown="cuentaletras()"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="left">
+				<div class="labelSmallblue" id="etiquetaSMS"
+					style="border-style: solid; size: portrait; display: none;">
+					Para personalizar el texto de su SMS introduzca "{nombre}" en el
+					lugar adecuado para que <br>sea sustituido por el nombre de su
+					destinatario
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="labelSmallblue">Nº TELÉFONO:</td>
+			<td><input type="text" name="telefono"></td>
+		</tr>
+		<tr>
+			<td height="10px"></td>
+		</tr>
+	</table>
+	<table align="center" >
+		<tr>
+			<td class="labelSmallblue">
+				<div id="listadestinatarios"
+					style="width: 450px; height: 100px; overflow: auto; visibility: hidden;">
+					<input type="checkbox" id="cbgroup1_master"
+						onchange="togglecheckboxes(this,'telefonos')" > SELECCIONAR TODOS 
+					<table style="border-top: double; border-bottom: double; border-right: double; border-left: double;" >
+						<c:forEach items="${destinatarios }" var="destinatario">
+							<tr>
+								<td width="10"><input type="checkbox"
+									value="${destinatario.telefono }" name="telefonos"></td>
+								<td width="200">${destinatario.nombre }</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
 			</td>
 		</tr>
 		<tr>
@@ -77,7 +116,7 @@
 		<input type="checkbox" id="cbgroup1_master"
 			onchange="togglecheckboxes(this,'telefonos')"> Toggle All
 		<table border="1">
-			<c:forEach items="${destinatarios }" var="destinatario">
+			<c:forEach items="${envio.destinatarios }" var="destinatario">
 				<tr>
 					<td width="10"><input type="checkbox"
 						value="${destinatario.telefono }" name="telefonos"></td>
@@ -90,6 +129,13 @@
 	<div>
 		<input type="submit" class="button"  value="ENVIAR">
 	</div>
+			<td height="5px"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit"
+				class="button" value="ENVIAR"></td>
+		</tr>
+	</table>
 
 </sp:form>
 
