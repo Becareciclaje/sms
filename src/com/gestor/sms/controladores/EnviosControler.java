@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gestor.sms.beans.Envio;
 import com.gestor.sms.datos.Cuenta;
 import com.gestor.sms.datos.Destinatario;
 import com.gestor.sms.datos.Usuario;
@@ -36,7 +37,7 @@ public class EnviosControler
 		Usuario usuario = (Usuario) request.getSession(true).getAttribute("usuario");
 
 		List<Cuenta> cuentas = new ArrayList<>();
-
+		Envio envio= new Envio();
 		try
 		{
 
@@ -45,7 +46,9 @@ public class EnviosControler
 					usuario.getLogin());
 
 			getEnviosServiceInterface().cargaCuentasByUsuario(cuentas, usuarios.get(0));
-			modelAndView.addObject("cuentas", cuentas);
+			//modelAndView.addObject("cuentas", cuentas);
+			envio.setCuenta(new Cuenta());
+			envio.setCuentas(cuentas);
 
 		} catch (Exception e)
 		{
@@ -57,6 +60,8 @@ public class EnviosControler
 		{
 			List<Destinatario> destinatarios1 = new ArrayList<>();
 			modelAndView.addObject("destinatarios", destinatarios1);
+			modelAndView.addObject("envio", envio);
+			
 			return modelAndView;			
 		}
 		
@@ -65,7 +70,8 @@ public class EnviosControler
 		try
 		{
 			getEnviosServiceInterface().dameDestinatarios(destinatarios, Integer.parseInt(request.getParameter("Cuenta")));
-			modelAndView.addObject("destinatarios", destinatarios);
+			envio.setDestinatarios(destinatarios);
+			modelAndView.addObject("envio", envio);
 			modelAndView.addObject("cuenta", request.getParameter("Cuenta"));
 			modelAndView.addObject("tipoenvio", request.getParameter("envios"));
 		} catch (Exception e)
