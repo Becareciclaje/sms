@@ -12,39 +12,40 @@ usuario:${session }
 	<sp:form modelAttribute="compra" action="listaCompras">
 		<div>
 
-			<div class="linea">SELECCIONE CUENTA</div>
-			<sp:select id="Cuenta" class="linea" items="${cuentas }"  itemValue="id" path="cuenta.id"> 
-		
-
+			
+			<sp:select id="Cuenta" class="linea" 
+				 path="cuenta.id" >
+				<sp:option value="0">Selecciona cuenta...</sp:option>
+				<sp:options items="${cuentas }" itemValue="id"/>
 			</sp:select>
 			<input type="submit" value="SELECCIONAR">
 		</div>
-		</sp:form>
+	</sp:form>
 
-		
 
-		<table border="1">
+
+	<table border="1">
+		<tr>
+			<td>CANTIDAD</td>
+			<td>CUENTA</td>
+			<td>FECHA</td>
+
+		</tr>
+
+
+
+		<c:forEach items="${compras}" var="compra">
+
+
 			<tr>
-				<td>CANTIDAD</td>
-				<td>CUENTA</td>
-				<td>FECHA</td>
+				<td>${compra.cantidad}</td>
+				<td>${compra.cuenta}</td>
+				<td>${compra.fecha}</td>
 
 			</tr>
 
-
-			
-			<c:forEach items="${compras}" var="compra">
-				
-
-				<tr>
-					<td>${compra.cantidad}</td>
-					<td>${compra.cuenta}</td>
-					<td>${compra.fecha}</td>
-					
-				</tr>
-				
-			</c:forEach>
-		</table>
+		</c:forEach>
+	</table>
 
 </body>
 
