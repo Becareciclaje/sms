@@ -46,7 +46,8 @@
 							<li><a href="#">Mantenimiento Cuenta</a></li>
 							<li><a href="#">Destinatarios</a></li>
 							<li><a href="compras" title="Compra SMS">Compra SMS</a></li>
-						</ul> >>>>>>> branch 'HEAD' of https://github.com/Becareciclaje/sms.git
+							<li><a href="listaCompras" title="Compra SMS">Lista Compras</a></li>
+						</ul>
 					</li>
 					<li><span>Envíos</span>
 						<ul>
