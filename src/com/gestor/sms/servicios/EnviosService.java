@@ -13,7 +13,6 @@ import com.gestor.sms.datos.Destinatario;
 import com.gestor.sms.datos.Envio;
 import com.gestor.sms.datos.Usuario;
 
-
 public class EnviosService extends GestorService implements EnviosServiceInterface
 {
 
@@ -23,7 +22,7 @@ public class EnviosService extends GestorService implements EnviosServiceInterfa
 	@SessionManager
 	public void dameDestinatarios(List<Destinatario> destinatarios, int id) throws Exception
 	{
-		//Cuenta cuenta = DameCuenta(id);
+		// Cuenta cuenta = DameCuenta(id);
 		List<Cuenta> cuentas = new ArrayList<Cuenta>();
 		getEnviosDao().setSession(getGestorDao().getSession());
 		getEnviosDao().dameDestinatarios(cuentas, id);
@@ -44,38 +43,43 @@ public class EnviosService extends GestorService implements EnviosServiceInterfa
 	{
 		getEnviosDao().setSession(getGestorDao().getSession());
 		getEnviosDao().cargaCuentasByUsuario(cuentas, usuario);
-		
+
 	}
 
 	@Override
 	@SessionManager
-	public void grabaEnvios(HttpServletRequest request,Usuario usuario)
+	public void grabaEnvios(HttpServletRequest request, Usuario usuario)
 	{
-		String tipoEnvio = (String) request.getParameter("envios"); 
+		String tipoEnvio = (String) request.getParameter("envios");
 		String telefono = request.getParameter("telefono");
 		String mensaje = request.getParameter("textoSMS");
 		String[] telefonos = request.getParameterValues("telefonos");
 
-		System.out.println(tipoEnvio+"::"+telefono+"::"+mensaje);
-		for (int i = 0; i < telefonos.length; i++)
+		System.out.println(tipoEnvio + "::" + telefono + "::" + mensaje);
+		if (telefonos != null)
 		{
-			System.out.println(telefonos[i]);
+			for (int i = 0; i < telefonos.length; i++)
+			{
+				System.out.println(telefonos[i]);
+			}
 		}
-				
-		
+
 		Envio envio = new Envio();
-		
-		if(tipoEnvio=="1") // individual
+		String idcuenta = request.getParameter("idCuenta");
+		Cuenta cuenta = new Cuenta();
+		cuenta.setId(Integer.parseInt(idcuenta));
+
+		if (tipoEnvio.equals("1")) // individual
 		{
-		
+
 			envio.setFecha(new Date());
 			envio.setTelefono(telefono);
 			envio.setTextoSMS(mensaje);
 			envio.setIndiicadorEnvio(null);
 			envio.setFechaEnvio(null);
+			envio.setCuenta(cuenta);
 			getGestorDao().grabaDato(envio);
-		}
-		else
+		} else
 		{
 			for (int i = 0; i < telefonos.length; i++)
 			{
@@ -85,12 +89,12 @@ public class EnviosService extends GestorService implements EnviosServiceInterfa
 				envio.setTextoSMS(mensaje);
 				envio.setIndiicadorEnvio(null);
 				envio.setFechaEnvio(null);
-				
+				envio.setCuenta(cuenta);
 				getGestorDao().grabaDato(envio);
 
 			}
 		}
-		
+
 	}
 
 	public EnviosDao getEnviosDao()
@@ -102,5 +106,5 @@ public class EnviosService extends GestorService implements EnviosServiceInterfa
 	{
 		this.enviosDao = enviosDao;
 	}
-	
+
 }

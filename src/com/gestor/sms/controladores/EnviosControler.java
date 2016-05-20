@@ -24,7 +24,7 @@ public class EnviosControler
 	private EnviosServiceInterface enviosServiceInterface;
 
 	@RequestMapping("envios")
-	public ModelAndView envios(HttpServletRequest request, Destinatario destinatario)
+	public ModelAndView envios(HttpServletRequest request)
 	{
 //		if (request.getSession(true).getAttribute("usuario") == null)
 //		{
@@ -52,9 +52,11 @@ public class EnviosControler
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (destinatario.getCuenta()==null)
+		//if (destinatario.getCuenta()==null)
+		if(request.getParameter("Cuenta")==null)	
 		{
-			modelAndView.addObject("destinatario", new Destinatario());
+			List<Destinatario> destinatarios1 = new ArrayList<>();
+			modelAndView.addObject("destinatarios", destinatarios1);
 			return modelAndView;			
 		}
 		
@@ -62,8 +64,10 @@ public class EnviosControler
 
 		try
 		{
-			getEnviosServiceInterface().dameDestinatarios(destinatarios, cuentas.get(0).getId());
+			getEnviosServiceInterface().dameDestinatarios(destinatarios, Integer.parseInt(request.getParameter("Cuenta")));
 			modelAndView.addObject("destinatarios", destinatarios);
+			modelAndView.addObject("cuenta", request.getParameter("Cuenta"));
+			modelAndView.addObject("tipoenvio", request.getParameter("envios"));
 		} catch (Exception e)
 		{
 			// TODO Auto-generated catch block
@@ -104,8 +108,10 @@ public class EnviosControler
 	}
 
 	@RequestMapping("/seleccionar")
-	public ModelAndView seleccionar(HttpServletRequest request, Usuario usuario)
+	public ModelAndView seleccionar(HttpServletRequest request)
 	{
+		Usuario usuario = (Usuario) request.getSession(true).getAttribute("usuario");
+		
 		ModelAndView modelAndView = new ModelAndView("envios");
 
 		try

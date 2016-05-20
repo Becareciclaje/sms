@@ -3,7 +3,7 @@
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <jsp:include page="cabecera.jsp"></jsp:include>
-
+<br>
 <sp:form modelAttribute="destinatarios" action="envios"
 	method="GET" methodParam="GET">
 <div class="labelBigBlue" align="left">ENVÍO SMS</div>
@@ -23,7 +23,7 @@
 		<tr>
 			<td class="labelSmallblue">CUENTA:</td>
 			<td align="center">
-				<select id="Cuenta" class="linea" items="${cuentas }" itemValue="id"
+				<select id="Cuenta" name="Cuenta" class="linea" items="${cuentas }" itemValue="id"
 					path="cuenta.id" width="200">
 					<c:forEach items="${cuentas }" var="cuenta">
 						<option value="${cuenta.id }">${cuenta.nif }-
@@ -41,6 +41,10 @@
 
 <sp:form modelAttribute="destinatarios" action="seleccionar"
 	method="GET" methodParam="GET">
+	
+	<input type="text" name="idCuenta" value="${cuenta }">
+	<input type="text" name="envios" value="${tipoenvio }">
+	
 	<table align="center" >
 		<tr>
 			<td class="labelSmallblue">Texto SMS a enviar:</td>
@@ -71,12 +75,12 @@
 	<div id="listadestinatarios"
 		style="width: 450px; height: 100px; overflow: auto; visibility: hidden;">
 		<input type="checkbox" id="cbgroup1_master"
-			onchange="togglecheckboxes(this,'telefonos[]')"> Toggle All
+			onchange="togglecheckboxes(this,'telefonos')"> Toggle All
 		<table border="1">
 			<c:forEach items="${destinatarios }" var="destinatario">
 				<tr>
 					<td width="10"><input type="checkbox"
-						value="${destinatario.telefono }" name="telefonos[]"></td>
+						value="${destinatario.telefono }" name="telefonos"></td>
 					<td width="200">${destinatario.nombre }</td>
 				</tr>
 			</c:forEach>
