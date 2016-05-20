@@ -37,7 +37,7 @@
 							<li><a href="#">Precios SMS</a></li>
 							<li><a href="#">Horarios Envío SMS</a></li>
 						</ul>
-					</li>
+					</li>  
 
 				</c:if>
 				<c:if test="${rol.rol eq rolUser}">
