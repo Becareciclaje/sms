@@ -65,6 +65,7 @@
 
 #nav>li:hover ul {
 	display: block;
+	 
 }
 
 #nav>li:hover {
@@ -335,16 +336,20 @@ nav ul li {
 }
 
 footer {
-	position: fixed;
+	
 	bottom: 0;
 	z-index: 999999;
 	width: 99%;
 	background-color: #2B33D6;
 }
+.largo
+{
+	height: auto;
+}
 
 header {
-	position: fixed;
+	
 	z-index: 999999;
-	width: 99%;
+
 	background-color: #2B33D6;
 }
