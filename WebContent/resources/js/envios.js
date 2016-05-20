@@ -38,7 +38,7 @@ function arreglacapa(i) {
 }
 
 function cuentaletras() {
-	document.getElementById("caracteres").value = 160 - (document
+	document.getElementById("caracteres").innerHTML = 160 - (document
 			.getElementById('textoSMS').value.length + 1);
 }
 
