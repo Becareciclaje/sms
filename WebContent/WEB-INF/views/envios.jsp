@@ -4,21 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <jsp:include page="cabecera.jsp"></jsp:include>
 
-<sp:form modelAttribute="destinatarios" action="seleccionar"
+<sp:form modelAttribute="destinatarios" action="envios"
 	method="GET" methodParam="GET">
 <div class="labelBigBlue" align="left">ENVÍO SMS</div>
 	<table align="center" >
-		<tr>
-			<td colspan="2" align="center">
-				<select id="Cuenta" class="linea" items="${cuentas }" itemValue="id"
-					path="id" onchange="cargarDestinarios(this.value)" width="200">
-					<c:forEach items="${cuentas }" var="cuenta">
-						<option value="${cuenta.id }">${cuenta.nif }-
-							${cuenta.nombre }</option>
-					</c:forEach>
-				</select> 	
-			</td>
-		</tr>
 		<tr>
 			<td class="labelSmallblue">TIPO DE ENVÍO:</td>
 			<td>
@@ -31,6 +20,28 @@
 				</select>					
 			</td>
 		</tr>
+		<tr>
+			<td class="labelSmallblue">CUENTA:</td>
+			<td align="center">
+				<select id="Cuenta" class="linea" items="${cuentas }" itemValue="id"
+					path="cuenta.id" width="200">
+					<c:forEach items="${cuentas }" var="cuenta">
+						<option value="${cuenta.id }">${cuenta.nif }-
+							${cuenta.nombre }</option>
+					</c:forEach>
+				</select> 	
+			</td>
+		</tr>
+	</table>
+	<div>
+		<input type="submit" class="button"  value="BUSCAR DESTINATARIOS">
+	</div>
+	
+</sp:form>
+
+<sp:form modelAttribute="destinatarios" action="seleccionar"
+	method="GET" methodParam="GET">
+	<table align="center" >
 		<tr>
 			<td class="labelSmallblue">Texto SMS a enviar:</td>
 			<td>
@@ -54,17 +65,9 @@
 			</td>
 		</tr>			
 				
-	</table>
-
-	
-	
-	
-
+	</table>		
 	<br>
-
-	
 	<br>
-
 	<div id="listadestinatarios"
 		style="width: 450px; height: 100px; overflow: auto; visibility: hidden;">
 		<input type="checkbox" id="cbgroup1_master"

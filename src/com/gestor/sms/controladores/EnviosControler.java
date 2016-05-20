@@ -24,18 +24,18 @@ public class EnviosControler
 	private EnviosServiceInterface enviosServiceInterface;
 
 	@RequestMapping("envios")
-	public ModelAndView envios(HttpServletRequest request)
+	public ModelAndView envios(HttpServletRequest request, Destinatario destinatario)
 	{
-		if (request.getSession(true).getAttribute("usuario") == null)
-		{
-			request.getSession(true).invalidate();
-			return new ModelAndView("home");
-		}
-		Usuario usuario = (Usuario) request.getSession(true).getAttribute("usuario");
+//		if (request.getSession(true).getAttribute("usuario") == null)
+//		{
+//			request.getSession(true).invalidate();
+//			return new ModelAndView("home");
+//		}
 
 		ModelAndView modelAndView = new ModelAndView("envios");
+		Usuario usuario = (Usuario) request.getSession(true).getAttribute("usuario");
+
 		List<Cuenta> cuentas = new ArrayList<>();
-		List<Destinatario> destinatarios = new ArrayList<>();
 
 		try
 		{
@@ -45,15 +45,30 @@ public class EnviosControler
 					usuario.getLogin());
 
 			getEnviosServiceInterface().cargaCuentasByUsuario(cuentas, usuarios.get(0));
-			getEnviosServiceInterface().dameDestinatarios(destinatarios, cuentas.get(1).getId());
+			modelAndView.addObject("cuentas", cuentas);
 
 		} catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		modelAndView.addObject("cuentas", cuentas);
-		modelAndView.addObject("destinatarios", destinatarios);
+		if (destinatario.getCuenta()==null)
+		{
+			modelAndView.addObject("destinatario", new Destinatario());
+			return modelAndView;			
+		}
+		
+		List<Destinatario> destinatarios = new ArrayList<>();
+
+		try
+		{
+			getEnviosServiceInterface().dameDestinatarios(destinatarios, cuentas.get(0).getId());
+			modelAndView.addObject("destinatarios", destinatarios);
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 
 		return modelAndView;
 	}
