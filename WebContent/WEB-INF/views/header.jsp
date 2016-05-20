@@ -37,7 +37,7 @@
 							<li><a href="#">Precios SMS</a></li>
 							<li><a href="#">Horarios Envío SMS</a></li>
 						</ul>
-					</li>  
+					</li>
 
 				</c:if>
 				<c:if test="${rol.rol eq rolUser}">
@@ -46,8 +46,7 @@
 							<li><a href="#">Mantenimiento Cuenta</a></li>
 							<li><a href="#">Destinatarios</a></li>
 							<li><a href="compras" title="Compra SMS">Compra SMS</a></li>
-							<li><a href="listaCompras" title="Compra SMS">Lista Compras</a></li>
-						</ul>
+						</ul> >>>>>>> branch 'HEAD' of https://github.com/Becareciclaje/sms.git
 					</li>
 					<li><span>Envíos</span>
 						<ul>
