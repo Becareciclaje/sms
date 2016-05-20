@@ -1,51 +1,51 @@
-%@page import="com.gestor.sms.datos.Usuario"%>
+<%@page import="com.gestor.sms.datos.Usuario"%>
 <%@taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-usuario:${session }
-<c:if test="${empty session.usuario || session.usuario.id eq 0  }">
 
-</c:if>
 <jsp:include page="cabecera.jsp"></jsp:include>
 
-<body>
-
-	<sp:form modelAttribute="compra" action="listaCompras">
-		<div>
-		
-			<sp:select id="Cuenta" class="linea" 
-				 path="cuenta.id" >
-				<sp:option value="0">Selecciona cuenta...</sp:option>
-				<sp:options items="${cuentas }" itemValue="id"/>
-			</sp:select>
-			<input type="submit" value="SELECCIONAR">
-		</div>
-	</sp:form>
 
 
+<sp:form modelAttribute="compra" action="listaCompras">
 
-	<table border="1">
+	<div class="labelBigBlue" align="left">LISTADO COMPRA SMS</div>
+	<table align="center">
 		<tr>
-			<td>CANTIDAD</td>
-			<td>CUENTA</td>
-			<td>FECHA</td>
-
+			<td><sp:select id="Cuenta" class="linea" path="cuenta.id">
+					<sp:option value="0">Selecciona cuenta...</sp:option>
+					<sp:options items="${cuentas }" itemValue="id" />
+				</sp:select>
+			</td>
 		</tr>
+		<tr>
+			<td height="5px"></td>
+		</tr>
+		<tr>
+			<td align="center">
+				<input type="submit" class="button" value="SELECCIONAR">				
+			</td>
+		</tr>
+		<tr>
+			<td height="5px"></td>
+		</tr>
+	</table>	
+</sp:form>
 
 
 
-		<c:forEach items="${compras}" var="compra">
+<table border="1" align="center">
+	<tr>
+		<td class="labelMediumblue" align="center">CANTIDAD</td>
+		<td class="labelMediumblue" align="center">CUENTA</td>
+		<td class="labelMediumblue" align="center">FECHA</td>
+	</tr>
+	<c:forEach items="${compras}" var="compra">
+		<tr>
+			<td class="labelSmallblue">${compra.cantidad}</td>
+			<td class="labelSmallblue">${compra.cuenta}</td>
+			<td class="labelSmallblue">${compra.fecha}</td>
+		</tr>
+	</c:forEach>
+</table>
 
-
-			<tr>
-				<td>${compra.cantidad}</td>
-				<td>${compra.cuenta}</td>
-				<td>${compra.fecha}</td>
-
-			</tr>
-
-		</c:forEach>
-	</table>
-
-</body>
-
-</html>
+<jsp:include page="pie.jsp"></jsp:include>
